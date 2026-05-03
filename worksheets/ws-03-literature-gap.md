@@ -77,39 +77,44 @@ Membandingkan deep learning 2024 dengan decision tree sederhana tanpa justifikas
 ```
 LITERATURE MAPPING
 
-Topik      : ____________________
-Database   : ____________________
-Query      : ____________________
-Tahun      : ____________________
-Hasil awal : ____ paper → Screening → ____ paper final
+Topik      : Deteksi anomali jaringan menggunakan SMOTE dan Random Forest
+Database   : Google Scholar
+Query      : ("anomaly detection" OR "intrusion detection") AND ("SMOTE") AND ("random forest" OR "machine learning")
+Tahun      : 2020-2025
+Hasil awal : 20 paper → Screening → 5 paper final
 
 Literature Matrix (concept-centric):
 
 | Study | Tahun | Method | Data | Result | Limitation |
 |-------|-------|--------|------|--------|------------|
-|       |       |        |      |        |            |
+|   Fadil et al.   |   2025    |    SMOTE + Random Forest    |   Trafik jaringan   |    akuasi meningkat    |      Data sintetis      |
+|   Study A   |   2023    |    SMOTE + SVM   |   Dataset IDS publik   |    Recall meningkat    |      Overfitting      |
+|   Study B   |   2022    |    Random Forest   |   Trafik Jaringan   |    Stabil    |     Data tidak seimbang     |
+|   Study C   |   2021    |    SMOTE + Neural Network   |   Dataset publik   |    Akurasi Tinggi    |     Tidak Realistis     |
+|   Study D   |   2020    |    Decision Tree   |   Trafik jaringan   |    Cepat    |     Performa Rendah     |
 
 Pola yang ditemukan:
-  Metode dominan     : ____________________
-  Dataset umum       : ____________________
-  Limitasi berulang  : ____________________
+  Metode dominan     : SMOTE + Machine Learning (RF, SVM, NN)
+  Dataset umum       : Dataset publik & trafik jaringan
+  Limitasi berulang  : Data sintetis, distribusi tidak realistis, overfitting
 
 GAP IDENTIFICATION
 
-Gap 1: [Jenis: performance / method / data / context]
-  Deskripsi    : ____________________
-  Bukti        : ____________________
-  Signifikansi : ____________________
+Gap 1: janis data gap
+  Deskripsi    : Banyak penelitian menggunakan data sintetis dari SMOTE
+  Bukti        : Mayoritas studi dalam tabel menggunakan SMOTE sebagai preprocessing
+  Signifikansi : Data sintetis bisa tidak mencerminkan kondisi nyata
 
-Gap 2: [Jenis: ____]
-  Deskripsi    : ____________________
-  Bukti        : ____________________
-  Signifikansi : ____________________
+Gap 2: Jenis:Performance Gap + Validity Gap
+  Deskripsi    : Peningkatan performa model belum tentu valid di kondisi real
+  Bukti        : Akurasi meningkat setelah SMOTE, tapi distribusi data berubah
+  Signifikansi : Bisa menghasilkan kesimpulan yang menyesatkan
 
 Baseline Selection:
 | Baseline | Relevansi | Representatif | Source |
 |----------|-----------|---------------|--------|
-|          |           |               |        |
+|Random Forest tanpa SMOTE|Sama-sama deteksi anomali|Metode umum|Study B|
+|SVM + SMOTE|Sama preprocessing|Banyak digunakan|Study A|
 ```
 
 ---
@@ -123,20 +128,20 @@ Gunakan topik riset dari WS-02. Cari minimal 5 paper relevan menggunakan databas
 > - Tulis query Boolean yang digunakan: contoh `("object detection" OR "image classification") AND ("edge computing") NOT ("medical")`. Dokumentasikan query secara eksplisit.
 > - Akses gratis: buka Google Scholar → cari judul paper → klik [PDF] jika tersedia, atau akses lewat campus VPN
 
-**Topik riset:** ________________________________________
-**Query pencarian:** ____________________________________
-**Database:** ___________________________________________
+**Topik riset:** Deteksi anomali jaringan dengan SMOTE
+**Query pencarian:** ("anomaly detection") AND ("SMOTE") AND ("machine learning")
+**Database:** Google Scholar
 
 | # | Study | Tahun | Method | Dataset | Result | Limitasi |
 |---|-------|-------|--------|---------|--------|----------|
-| 1 | *Contoh: Rahman et al.* | *2023* | *CNN* | *ImageNet subset* | *Acc 91%* | *Hanya 3 kelas* |
-| 2 | | | | | | |
-| 3 | | | | | | |
-| 4 | | | | | | |
-| 5 | | | | | | |
+| 1 | Fadil et al. | 2025 | SMOTE + RF | Trafik jaringan | Akurasi naik | Data sintetis |
+| 2 | Study A | 2023 | SMOTE + SVM | IDS dataset | Recall naik | Overfitting |
+| 3 | Study B | 2022 | RF | Trafik jaringan | Stabil | Imbalance |
+| 4 | Study C | 2021 | SMOTE + NN | Dataset publik | Tinggi | Tidak realistis |
+| 5 | Study D | 2020 | Decision Tree | Trafik jaringan | Cepat | Kurang akurat |
 
-**Pola yang terlihat — Metode dominan:** ___________________
-**Limitasi yang berulang:** ______________________________
+**Pola yang terlihat — Metode dominan:** SMOTE + ML
+**Limitasi yang berulang:** Data sintetis & tidak realistis
 
 ---
 
@@ -146,14 +151,14 @@ Berdasarkan tabel di Latihan 1, identifikasi gap.
 
 | Jenis Gap | Ditemukan? | Gap Statement |
 |-----------|-----------|---------------|
-| Performance Gap | [ ] Ya / [ ] Tidak | *Contoh: Akurasi turun di bawah 80% untuk kelas minoritas* |
-| Method Gap | [ ] Ya / [ ] Tidak | |
-| Data Gap | [ ] Ya / [ ] Tidak | |
-| Context Gap | [ ] Ya / [ ] Tidak | |
+| Performance Gap | [v] Ya / [ ] Tidak | *Contoh: Akurasi turun di bawah 80% untuk kelas minoritas* |
+| Method Gap | [ ] Ya / [v] Tidak | |
+| Data Gap | [v] Ya / [ ] Tidak | |
+| Context Gap | [ ] Ya / [v] Tidak | |
 
-**Gap utama yang dipilih:** _____________________________
+**Gap utama yang dipilih:** Data Gap + Performance Gap
 **Mengapa gap ini penting (bukan sekadar "belum ada yang meneliti")?**
-> ___________________________________________________
+> Karena model yang dilatih dari data sintetis bisa menghasilkan performa tinggi di penelitian, tapi belum tentu bekerja dengan baik di kondisi nyata.
 
 ---
 
@@ -163,11 +168,11 @@ Pilih 2 baseline dari literatur yang sudah dibaca.
 
 | # | Baseline | Mengapa Relevan | Mengapa Representatif | Apakah SOTA? | Sumber |
 |---|----------|----------------|----------------------|-------------|--------|
-| 1 | *Contoh: RF + TF-IDF* | *Task sama: klasifikasi teks* | *Dipakai 6 dari 10 paper* | *Bukan, tapi common practice* | *Lee et al., 2022* |
-| 2 | | | | | |
+| 1 | Random Forest tanpa SMOTE | Task sama | Umum digunakan | Bukan | Study B |
+| 2 | SVM + SMOTE | Sama metode preprocessing | Banyak Dipakai | Bukan | Study A |
 
-**Apakah pemilihan baseline ini bisa dianggap straw man?** [ ] Ya / [ ] Tidak
-> Justifikasi: ________________________________________
+**Apakah pemilihan baseline ini bisa dianggap straw man?** [ ] Ya / [v] Tidak
+> Justifikasi: Baseline yang dipilih masih relevan dan umum digunakan, bukan metode yang sengaja dilemahkan.
 
 ---
 
@@ -176,5 +181,5 @@ Pilih 2 baseline dari literatur yang sudah dibaca.
 > Apa perbedaan antara "belum ada yang meneliti ini" (klaim tanpa bukti) dengan research gap yang valid? Bagaimana cara membuktikan bahwa sebuah gap benar-benar ada?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+“Belum ada yang meneliti” itu belum tentu benar, bisa jadi kita kurang cari referensi. Sedangkan research gap itu harus ada bukti dari beberapa penelitian yang menunjukkan kekurangan yang sama.
+Cara membuktikan gap itu ada adalah dengan membaca beberapa paper, lalu melihat pola yang sama, misalnya banyak penelitian menggunakan SMOTE tapi punya masalah yang sama yaitu data menjadi tidak realistis. Dari situ baru bisa disimpulkan bahwa memang ada gap yang perlu diteliti.
