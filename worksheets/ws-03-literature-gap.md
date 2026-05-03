@@ -151,9 +151,9 @@ Berdasarkan tabel di Latihan 1, identifikasi gap.
 
 | Jenis Gap | Ditemukan? | Gap Statement |
 |-----------|-----------|---------------|
-| Performance Gap | [v] Ya / [ ] Tidak | *Contoh: Akurasi turun di bawah 80% untuk kelas minoritas* |
+| Performance Gap | [v] Ya / [ ] Tidak | Performa meningkat setelah SMOTE tapi belum tentu valid |
 | Method Gap | [ ] Ya / [v] Tidak | |
-| Data Gap | [v] Ya / [ ] Tidak | |
+| Data Gap | [v] Ya / [ ] Tidak | Banyak studi menggunakan data sintetis |
 | Context Gap | [ ] Ya / [v] Tidak | |
 
 **Gap utama yang dipilih:** Data Gap + Performance Gap
