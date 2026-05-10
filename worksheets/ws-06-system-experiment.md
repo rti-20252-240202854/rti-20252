@@ -80,25 +80,25 @@ Jika variabel tidak bisa di-map ke komponen apapun → arsitektur perlu didesain
 ```
 SYSTEM-EXPERIMENT MAPPING
 
-Research Question: ____________________
+Research Question: apakah penggunaan SMOTE dapat meningkatkan performa Random Forest pada deteksi anomali jaringan dibandingkan Random Forest tanpa SMOTE berdasarkan akurasi, presisi, recall, dan F1-score?
 
 Variable → Component Mapping:
 | Variabel | Tipe | Komponen Sistem | Cara Manipulasi/Pengukuran |
 |----------|------|-----------------|---------------------------|
-|          | IV   |                 |                           |
-|          | DV   |                 |                           |
-|          | CV   |                 |                           |
+| penggunaan SMOTE | IV   | model prepocessing | mengaktifkan/menonaktifkan SMOTE |
+| performa model | DV   | modul evalusasi model | mengukur akurasi,presisi,recal,f1 score |
+| dataset dan parameter model | CV   | config dataset dan parameter RF | dibuat tetap di semua eksperimen |
 
 4 Prinsip Desain:
-  [ ] Traceability — Setiap komponen bisa ditelusuri ke variabel
-  [ ] Variable Isolation — IV bisa diubah tanpa mengubah CV
-  [ ] Measurement Integration — Pengukuran DV built-in
-  [ ] Reproducibility — Setup bisa direkonstruksi
+  [v] Traceability — Setiap komponen bisa ditelusuri ke variabel
+  [v] Variable Isolation — IV bisa diubah tanpa mengubah CV
+  [v] Measurement Integration — Pengukuran DV built-in
+  [v] Reproducibility — Setup bisa direkonstruksi
 
 Experimental Setup:
-  Input data     : ____________________
-  Parameter      : ____________________
-  Output format  : ____________________
+  Input data     : dataset trafik jaringan
+  Parameter      : parameter random fores dibuat tetap
+  Output format  : akurasi,presisi,recal, f1 score
 ```
 
 ---
@@ -107,15 +107,15 @@ Experimental Setup:
 
 Gunakan RQ dan variabel dari WS-05. Petakan ke komponen sistem.
 
-**RQ:** __________________________________________________
+**RQ:** apakah penggunaan SMOTE dapat meningkatkan performa random forest pada deteksi anomali jaringan dibandingkan tanpa SMOTE?
 
 | Variabel | Tipe | Komponen Sistem | Cara Manipulasi / Pengukuran |
 |----------|------|-----------------|---------------------------|
-| *Contoh: Jenis model* | *IV* | *Modul classifier (swap RF ↔ CNN)* | *Ganti config `model_type`* |
-| | DV | | |
-| | CV | | |
+| pengggunaan SMOTE | IV | modul prepocessing | ON/OFF SMOTE |
+| performa model | DV | modul evaluasi | menghitung akurasi,presisi,recall,f1 dcore |
+| dataset dan parameter RF | CV | config sistem | dibuat sama |
 
-**Apakah semua variabel bisa di-map?** [ ] Ya / [ ] Tidak
+**Apakah semua variabel bisa di-map?** [v] Ya / [ ] Tidak
 > Jika tidak, komponen apa yang perlu ditambahkan? _________
 
 ---
@@ -126,14 +126,14 @@ Evaluasi desain sistem terhadap 4 prinsip.
 
 | Prinsip | Status | Bukti / Penjelasan |
 |---------|--------|-------------------|
-| Traceability | *Contoh: ✅ — setiap modul punya label variabel* | |
-| Modularity | | |
-| Controllability | | |
-| Measurability | | |
+| Traceability | v | setiap modul sesuai dengan variabel penelitian |
+| Modularity | v | SMOTE bisa di hidup/matikan tanpa ubah sistem lain |
+| Controllability | v | dataset dan parameter dibuat tetap |
+| Measurability | v | sistem langsung menghasilkan metrik evaluasi |
 
-**Prinsip mana yang paling sulit dipenuhi?** _______________
+**Prinsip mana yang paling sulit dipenuhi?** controllability
 **Strategi untuk mengatasinya:**
-> ___________________________________________________
+> menggunakan dataset dan parameter model yang sama di setiap eksperimen supaya hasil lebih konsisten
 
 ---
 
@@ -144,16 +144,16 @@ Jika sistem memiliki 3 komponen utama, rencanakan ablation study.
 > **Panduan jumlah kondisi:** Untuk 3 komponen (A, B, C), kondisi minimal yang direkomendasikan:
 > Full + (-A) + (-B) + (-C) = **4 kondisi dasar**. Jika waktu memungkinkan, tambahkan kombinasi ganda: (-A,-B), (-A,-C), (-B,-C) = **7 kondisi**. Sesuaikan dengan *computational cost* dan tenggat waktu penelitian.
 
-| Kondisi | Komponen A | Komponen B | Komponen C | Hasil yang Diharapkan |
+| Kondisi | Komponen A (SMOTE) | Komponen B (Random Forest) | Komponen C (Prepoccesing) | Hasil yang Diharapkan |
 |---------|-----------|-----------|-----------|----------------------|
-| Full | *Contoh: ✅ CNN* | *Contoh: ✅ Temporal features* | *Contoh: ✅ Z-score norm* | *Baseline penuh* |
-| – A | ❌ (ganti RF) | ✅ | ✅ | |
-| – B | ✅ | ❌ (tanpa temporal) | ✅ | |
-| – C | ✅ | ✅ | ❌ (tanpa normalisasi) | |
+| Full | ✅ | ✅ | ✅ | performa terbaik |
+| – A | ❌ (ganti RF) | ✅ | ✅ | performa menurun |
+| – B | ✅ | ❌ (tanpa temporal) | ✅ | klasifikasi berubah |
+| – C | ✅ | ✅ | ❌ (tanpa normalisasi) | kurang optimal |
 
-**Komponen mana yang diprediksi paling berkontribusi?** _____
+**Komponen mana yang diprediksi paling berkontribusi?** SMOTE
 **Mengapa?**
-> ___________________________________________________
+> membantu menyeimbangkan data
 
 ---
 
@@ -162,5 +162,5 @@ Jika sistem memiliki 3 komponen utama, rencanakan ablation study.
 > Apa risiko jika sistem dibangun seperti produk (monolitik, fitur lengkap) lalu baru dilakukan eksperimen? Mengapa arsitektur modular penting untuk riset?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> jika sistem dibuat seperti produk biasa yang monolitik dan terlalu banyak fitur, eksperimen jadi lebih susah karena variabelnya bercampur. Akibatnya, kita jadi sulit tahu bagian mana yang benar-benar mempengaruhi hasil penelitian
+> arsitektur modular penting supaya setiap komponen bisa diuji satu per satu dan hasil eksperimen lebih jelas
