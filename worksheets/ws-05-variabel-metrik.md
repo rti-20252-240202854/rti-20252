@@ -87,7 +87,7 @@ Alignment Check:
 
 Gunakan RQ dari WS-04. Definisikan variabel dan metriknya.
 
-**RQ:** __________________________________________________
+**RQ:** apakah penggunaan SMOTE dapat meningkatkan performa Random Forest pada deteksi anomali jaringan dibandingkan Random Forest tanpa SMOTE berdasarkan akurasi, precision, recall, dan F1-score?
 
 | Variabel | Tipe | Konsep Abstrak | Metrik Konkret | Skala (NOIR) | Satuan |
 |----------|------|---------------|----------------|-------------|--------|
