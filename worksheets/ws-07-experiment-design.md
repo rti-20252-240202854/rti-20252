@@ -68,36 +68,36 @@ Ancaman validitas harus diidentifikasi **sebelum** eksperimen dan mitigasinya di
 ```
 EXPERIMENT DESIGN
 
-Research Question : ____________________
-Hypothesis        : ____________________
-Tipe Eksperimen   : [ ] Comparison  [ ] Ablation  [ ] Parameter
+Research Question : apakah penggunaan SMOTE dapat meningkatkan performa random forest pada deteksi anomali jaringan dibandingkan tanpa SMOTE berdasarkan akurasi, presisi, recal, dan f1 score?
+Hypothesis        : penggunaan SMOTE memberikan peningkatan performa pada random forest dalam mendeteksi anomali jaringan
+Tipe Eksperimen   : [v] Comparison  [ ] Ablation  [ ] Parameter
 
 Kondisi Eksperimen:
 | Kondisi | Deskripsi | IV Value | CV Settings |
 |---------|-----------|----------|-------------|
-| Control |           |          |             |
-| Treatment |         |          |             |
+| Control | random forest tanpa SMOTE | off | dataset dan parameter sama |
+| Treatment | random forest dengan SMOTE | ON | dataset dan parameter sama |
 
 Fairness Checklist:
-  [ ] Dataset identik untuk semua kondisi
-  [ ] Preprocessing setara
-  [ ] Tuning effort setara
-  [ ] Environment identik
-  [ ] Metrik evaluasi sama
+  [v] Dataset identik untuk semua kondisi
+  [v] Preprocessing setara
+  [v] Tuning effort setara
+  [v] Environment identik
+  [v] Metrik evaluasi sama
 
 Threat Analysis:
 | Threat Type | Ancaman Spesifik | Mitigasi |
 |-------------|-----------------|----------|
-| Internal    |                 |          |
-| External    |                 |          |
-| Construct   |                 |          |
-| Conclusion  |                 |          |
+| Internal    | overfitting karena SMOTE | menggunakan data testing terpisah |
+| External    | dataset kurang mewakili kondisi nyata | menggunakan dataset yang lebih beragam |
+| Construct   | akurasi terlalu dominan | menambahkan presisi,recall,f1 score |
+| Conclusion  | jumlah data kurang | menggunakan dataset yang cukup |
 
 Statistical Plan:
-  Uji statistik   : ____________________
-  Justifikasi      : ____________________
-  Alpha            : ____________________
-  Effect size min  : ____________________
+  Uji statistik   : perbandingan hasil performa model
+  Justifikasi      : untuk melihat apakah SMOTE benar-benar meningkatkan performa
+  Alpha            : 0.05
+  Effect size min  : 5% peningkatan
 ```
 
 ---
@@ -106,13 +106,13 @@ Statistical Plan:
 
 Susun desain eksperimen berdasarkan RQ, variabel, dan sistem dari WS-04 sampai WS-06.
 
-**RQ:** __________________________________________________
-**Tipe eksperimen:** [ ] Comparison / [ ] Ablation / [ ] Parameter
+**RQ:** apakah penggunaan SMOTE dapat meningkatkan performa random forest pada deteksi anomali jaringan dibandingkan tanpa SMOTE
+**Tipe eksperimen:** [v] Comparison / [ ] Ablation / [ ] Parameter
 
 | Kondisi | Deskripsi | IV Value | CV Settings |
 |---------|-----------|----------|-------------|
-| Control | *Contoh: RF baseline dari literatur* | *RF* | *Dataset X, 80:20 split, seed 42* |
-| Treatment | | | |
+| Control | RF tanpa SMOTE | off | dataset dan prameter tetap |
+| Treatment | Rf menggunakan SMOTE | on | dataset dan parameter tetap |
 
 ---
 
@@ -122,13 +122,13 @@ Evaluasi apakah desain eksperimen di Latihan 1 sudah fair.
 
 | Kriteria | Status | Detail |
 |----------|--------|--------|
-| Dataset identik | *Contoh: ✅ — sama-sama pakai CIC-MalMem-2022* | |
-| Preprocessing setara | | |
-| Tuning effort setara | | |
-| Environment identik | | |
-| Metrik evaluasi sama | | |
+| Dataset identik | v | dataset sama digunakan di semua kondisi |
+| Preprocessing setara | v | proses prepocessing dibuat sama |
+| Tuning effort setara | v | parameter model dibuat tetap |
+| Environment identik | v | pengujian dilakukan pada sistem yang sama |
+| Metrik evaluasi sama | v | akurasi,presisi,recall,f1 score |
 
-**Ada yang tidak fair?** [ ] Ya / [ ] Tidak
+**Ada yang tidak fair?** [ ] Ya / [v] Tidak
 > Jika ya, bagaimana cara memperbaikinya? ________________
 
 ---
@@ -139,14 +139,14 @@ Identifikasi ancaman validitas untuk desain eksperimen ini.
 
 | Threat Type | Ancaman Spesifik | Mitigasi |
 |-------------|-----------------|----------|
-| Internal | *Contoh: Data leakage antara train-test* | *Contoh: Gunakan stratified split, validasi tidak ada overlap* |
-| External | | |
-| Construct | | |
-| Conclusion | | |
+| Internal | data leakage train-test | menggunakan split data yang benar |
+| External | dataset tidak realistis | menambahkan data lain |
+| Construct | akurasi bisa menipu | menggunakan beberapa metrik |
+| Conclusion | hasil kurang konsisten | melakukan pengujian berulang|
 
-**Ancaman mana yang paling sulit dimitigasi?** _____________
+**Ancaman mana yang paling sulit dimitigasi?** external validity
 **Mengapa?**
-> ___________________________________________________
+> dataset publik belum tentu benar-benar sama dengan kondisi jaringan nyata
 
 ---
 
@@ -155,6 +155,6 @@ Identifikasi ancaman validitas untuk desain eksperimen ini.
 > Sebuah paper melaporkan "metode kami mengalahkan semua baseline." Apa 3 pertanyaan pertama yang harus diajukan untuk mengevaluasi klaim ini?
 
 **Jawaban:**
-1. ___________________________________________________
-2. ___________________________________________________
-3. ___________________________________________________
+1. dataset yang dipakai sama atau tidak dengan baseline?
+2. parameter dan preprocessing dibuat fair atau tidak?
+3. hasil bagus itu konsisten di semua metrik atau hanya di akurasi saja?
