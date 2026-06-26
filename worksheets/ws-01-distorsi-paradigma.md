@@ -99,7 +99,7 @@ Pilih satu paper riset di bidang TI yang mengklaim "metode X meningkatkan perfor
 
 | Tahap | Apa yang Dilakukan | Potensi Distorsi |
 |-------|-------------------|-----------------|
-| Reality → Data | Menggunakan dataset trafik jaringan terenkripsi dari dataset publik & capture jaringan | Dataset bisa tidak representatif terhadap kondisi jaringan nyata |
+| Reality → Data | Menggunakan dataset publik CIC-IDS2017 yang berisi trafik normal dan berbagai jenis serangan jaringan. | Dataset bisa tidak representatif terhadap kondisi jaringan nyata |
 | Data → Processing |Data dinormalisasi dan diseimbangkan menggunakan SMOTE |Data sintetis hasil SMOTE tidak sepenuhnya mencerminkan data asli |
 | Processing → Analysis |Model Random Forest dilatih dengan data sebelum dan sesudah SMOTE|Overfitting karena data hasil oversampling |
 | Analysis → Inference |Performa model dibandingkan menggunakan akurasi, precision, recall, dan F1-score |Metrik bisa bias karena distribusi data sudah diubah |
@@ -108,15 +108,14 @@ Pilih satu paper riset di bidang TI yang mengklaim "metode X meningkatkan perfor
 **Distorsi paling besar di tahap:** Processing
 
 Alasan:
-Karena di tahap ini data diubah pakai SMOTE jadi data tambahan (buatan).
-Di jurnal juga dijelasin kalau SMOTE bikin data baru dari data yang sudah ada
+Karena pada tahap ini dilakukan proses oversampling menggunakan SMOTE yang menghasilkan data sintetis. Data tambahan tersebut dapat mengubah distribusi data asli sehingga peningkatan performa model belum tentu mencerminkan kemampuan model pada kondisi jaringan nyata.
 
 **Dua distorsi spesifik yang teridentifikasi:**
 1. Bias karena data buatan
    -SMOTE bikin data anomali tambahan
    -Data bukan kejadian asli/real
 2. Bias karena distribusi data berubah
-   Awalnya data normal jauh lebih banyak anomali,namun setelah di SMOTE jadi seimbang. Masalahnya,dunia nyata biasanya tetap tidak seimbang.Jadi hasil model belum tentu sesuai dengan kondisi asli 
+   Setelah dilakukan SMOTE, distribusi data menjadi lebih seimbang dibanding kondisi aslinya. Padahal pada kondisi nyata, data anomali        biasanya tetap lebih sedikit daripada data normal sehingga hasil model belum tentu dapat digeneralisasi ke semua kondisi jaringan. 
 
 
 ## Latihan 2 — Analisis Kasus Etika
