@@ -69,12 +69,12 @@ Tanggal          : 24 April 2026
    - Data yang dibutuhkan untuk verifikasi: Confusion matrix, ukuran dataset, distribusi data, metode evaluasi (cross-validation / holdout)
 
 2. Posisi paradigma:
-   - Pendekatan: [v] Positivis  [ ] Interpretivis  [v] Design Science  [ ] Mixed
-   - Alasan: Penelitian ini fokus ke arah pengujian performa dan membangun model untuk diuji
+   - Pendekatan: [v] Positivis  [ ] Interpretivis  [ ] Design Science  [ ] Mixed
+   - Alasan:Penelitian ini berfokus pada pengujian pengaruh penggunaan SMOTE terhadap performa Random Forest menggunakan data                numerik dan eksperimen terkontrol, sehingga lebih sesuai dengan paradigma positivis.
 
 3. Identifikasi distorsi:
-   - Asumsi tersembunyi: data ini menunjukan kondisi real/nyata
-   - Sumber bias potensial: data tidak beragam dan overfitting
+   - Asumsi tersembunyi: dataset CIC-IDS2017 dianggap dapat mewakili kondisi jaringan nyata, padahal belum tentu menggambarkan                            seluruh kondisi jaringan sebenarnya.
+   - Sumber bias potensial: dataset tidak sepenuhnya mewakili kondisi jaringan nyata dan kemungkinan overfitting akibat data                                 sintetis hasil SMOTE.
    - Langkah mitigasi: menggunakan data yang beragam,validasi menyilang,dan pengujian data yang berbeda
 
 4. Komitmen etika:
@@ -112,10 +112,9 @@ Karena pada tahap ini dilakukan proses oversampling menggunakan SMOTE yang mengh
 
 **Dua distorsi spesifik yang teridentifikasi:**
 1. Bias karena data buatan
-   -SMOTE bikin data anomali tambahan
-   -Data bukan kejadian asli/real
+   SMOTE menghasilkan data anomali tambahan yang bukan berasal dari kejadian nyata, melainkan dibentuk dari pola data yang sudah    ada.
 2. Bias karena distribusi data berubah
-   Setelah dilakukan SMOTE, distribusi data menjadi lebih seimbang dibanding kondisi aslinya. Padahal pada kondisi nyata, data anomali        biasanya tetap lebih sedikit daripada data normal sehingga hasil model belum tentu dapat digeneralisasi ke semua kondisi jaringan. 
+   Setelah dilakukan SMOTE, distribusi data menjadi lebih seimbang dibanding kondisi aslinya. Padahal pada kondisi nyata, data      anomali biasanya tetap lebih sedikit daripada data normal sehingga hasil model belum tentu dapat digeneralisasi ke semua         kondisi jaringan. 
 
 
 ## Latihan 2 — Analisis Kasus Etika
