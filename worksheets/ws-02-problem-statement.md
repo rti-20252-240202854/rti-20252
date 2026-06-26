@@ -71,18 +71,18 @@ Domain & Konteks
   Konteks  : Deteksi anomali trafik jaringan menggunakan SMOTE dan Random Forest
 
 System Context
-  Input       : Dataset trafik jaringan (normal & anomali)
+  Input       : Dataset CIC-IDS2017 yang berisi trafik normal dan berbagai jenis serangan jaringan.
   Process     : Preprocessing data - SMOTE - training model Random Forest
   Output      : Hasil prediksi + nilai akurasi, precision, recall, F1-score
-  Outcome     : Model deteksi anomali dengan performa tinggi
-  Constraints : Dataset terbatas, data tidak selalu mencerminkan kondisi nyata
+  Outcome     : Mengetahui pengaruh penggunaan SMOTE terhadap performa Random Forest pada deteksi anomali jaringan.
+  Constraints : Dataset CIC-IDS2017 merupakan benchmark dataset sehingga belum tentu merepresentasikan seluruh kondisi jaringan nyata.
   Stakeholders: Peneliti, praktisi keamanan jaringan
 
 Fenomena → Problem
   Fenomena yang diamati             : Penggunaan SMOTE meningkatkan performa model deteksi anomali
   Gejala (symptom) yang terukur     : Nilai akurasi, precision, recall, dan F1-score meningkat setelah SMOTE
   Masalah yang didiagnosis          : SMOTE menghasilkan data sintetis yang mengubah distribusi data asli
-  Masalah riset (researchable)      : Belum diketahui apakah peningkatan performa model setelah SMOTE benar-benar valid atau hanya akibat distorsi data
+  Masalah riset (researchable)      : Belum diketahui apakah peningkatan performa Random Forest setelah penggunaan SMOTE benar-benar menunjukkan peningkatan kemampuan model atau dipengaruhi oleh perubahan distribusi data akibat oversampling.   
   Variabel yang terukur             : Akurasi,Precision, Recall,F1-score,Perbandingan performa (dengan vs tanpa SMOTE)
 
 Problem Quality Check
@@ -93,7 +93,8 @@ Problem Quality Check
   [v] Impact — Apakah ada kontribusi jika terjawab?
 
 Problem Statement (1 paragraf):
-Penggunaan SMOTE dalam deteksi anomali jaringan sering dilaporkan dapat meningkatkan performa model, yang ditunjukkan melalui kenaikan nilai akurasi, precision, recall, dan F1-score. Namun, berdasarkan analisis sebelumnya, SMOTE berpotensi menimbulkan distorsi karena menghasilkan data sintetis yang dapat mengubah distribusi data asli. Hal ini menimbulkan pertanyaan apakah peningkatan performa tersebut benar-benar mencerminkan kondisi nyata atau hanya akibat perubahan data. Oleh karena itu, penelitian ini bertujuan untuk mengevaluasi pengaruh penggunaan SMOTE terhadap keandalan model deteksi anomali dengan membandingkan performa model sebelum dan sesudah penerapan SMOTE menggunakan metrik yang sama.
+Penggunaan SMOTE dalam deteksi anomali jaringan sering dilaporkan dapat meningkatkan performa model, yang ditunjukkan melalui kenaikan nilai accuracy, precision, recall, dan F1-score. Namun, SMOTE menghasilkan data sintetis yang dapat mengubah distribusi data asli sehingga peningkatan performa tersebut belum tentu mencerminkan kondisi jaringan yang sebenarnya. Oleh karena itu, penelitian ini bertujuan untuk menganalisis pengaruh penggunaan SMOTE terhadap performa Random Forest pada dataset CIC-IDS2017 dengan membandingkan kondisi tanpa SMOTE dan dengan SMOTE menggunakan metrik evaluasi yang sama.
+
 
 ## Latihan 1 — Deteksi anomali jaringan dengan SMOTE
 
@@ -120,11 +121,11 @@ Gambarkan konteks sistem dari masalah riset di Latihan 1.
 
 | Komponen | Deskripsi |
 |----------|----------|
-| Input | Dataset trafik jaringan |
+| Input | Dataset CIC-IDS2017 |
 | Process | SMOTE + training model |
 | Output | Hasil prediksi & metrik |
-| Outcome | Model lebih akurat |
-| Constraints | Dataset terbatas |
+| Outcome | Mengetahui pengaruh penggunaan SMOTE terhadap performa Random Forest. |
+| Constraints | Dataset yang digunakan belum tentu merepresentasikan seluruh kondisi jaringan di dunia nyata. |
 | Stakeholders | Peneliti & praktisi |
 
 **Komponen mana yang paling relevan dengan masalah riset?** Process,karena masalah ada di SMOTE
@@ -146,7 +147,7 @@ Evaluasi problem statement yang sudah dibuat menggunakan 5 kriteria.
 **Skor total:** 24 / 25
 
 **Problem statement versi final (1 paragraf):**
-SMOTE memang bisa meningkatkan performa model deteksi anomali, tapi karena menghasilkan data buatan, ada kemungkinan hasil tersebut tidak mencerminkan kondisi nyata. Oleh karena itu, penelitian ini dilakukan untuk mengecek apakah peningkatan performa tersebut benar-benar valid atau hanya efek dari perubahan data.
+SMOTE sering dilaporkan dapat meningkatkan performa model deteksi anomali jaringan. Namun, karena menghasilkan data sintetis, peningkatan tersebut belum tentu mencerminkan kondisi jaringan yang sebenarnya. Oleh karena itu, penelitian ini dilakukan untuk menganalisis pengaruh penggunaan SMOTE terhadap performa Random Forest pada dataset CIC-IDS2017.
 ---
 
 ## Refleksi
