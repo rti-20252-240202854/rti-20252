@@ -79,7 +79,10 @@ LITERATURE MAPPING
 
 Topik      : Deteksi anomali jaringan menggunakan SMOTE dan Random Forest
 Database   : Google Scholar
-Query      : ("anomaly detection" OR "intrusion detection") AND ("SMOTE") AND ("random forest" OR "machine learning")
+Query      : ("intrusion detection" OR "anomaly detection")
+               AND ("SMOTE")
+               AND ("Random Forest")
+               AND ("CIC-IDS2017")
 Tahun      : 2020-2025
 Hasil awal : 20 paper → Screening → 5 paper final
 
@@ -95,26 +98,26 @@ Literature Matrix (concept-centric):
 
 Pola yang ditemukan:
   Metode dominan     : SMOTE + Machine Learning (RF, SVM, NN)
-  Dataset umum       : Dataset publik & trafik jaringan
+  Dataset umum       : Dataset benchmark IDS seperti CIC-IDS2017 dan dataset trafik jaringan publik.
   Limitasi berulang  : Data sintetis, distribusi tidak realistis, overfitting
 
 GAP IDENTIFICATION
 
 Gap 1: janis data gap
-  Deskripsi    : Banyak penelitian menggunakan data sintetis dari SMOTE
+  Deskripsi    : Banyak penelitian menggunakan SMOTE untuk mengatasi ketidakseimbangan data, namun belum banyak mengevaluasi                      dampak data sintetis terhadap validitas hasil model.
   Bukti        : Mayoritas studi dalam tabel menggunakan SMOTE sebagai preprocessing
   Signifikansi : Data sintetis bisa tidak mencerminkan kondisi nyata
 
 Gap 2: Jenis:Performance Gap + Validity Gap
-  Deskripsi    : Peningkatan performa model belum tentu valid di kondisi real
+  Deskripsi    : Peningkatan performa setelah penggunaan SMOTE belum tentu menunjukkan peningkatan kemampuan model yang                           sebenarnya karena distribusi data telah berubah.
   Bukti        : Akurasi meningkat setelah SMOTE, tapi distribusi data berubah
   Signifikansi : Bisa menghasilkan kesimpulan yang menyesatkan
 
 Baseline Selection:
-| Baseline | Relevansi | Representatif | Source |
+| Baseline | Mengapa Relevan | Mengapa Representatif | Source |
 |----------|-----------|---------------|--------|
-|Random Forest tanpa SMOTE|Sama-sama deteksi anomali|Metode umum|Study B|
-|SVM + SMOTE|Sama preprocessing|Banyak digunakan|Study A|
+|Random Forest tanpa SMOTE|Task sama|Metode umum pada IDS|Study B|
+|Random Forest + SMOTE|Sama algoritma, berbeda preprocessing|Digunakan pada penelitian Fadil et al.|Fadil et al.|
 ```
 
 ---
@@ -128,7 +131,7 @@ Gunakan topik riset dari WS-02. Cari minimal 5 paper relevan menggunakan databas
 > - Tulis query Boolean yang digunakan: contoh `("object detection" OR "image classification") AND ("edge computing") NOT ("medical")`. Dokumentasikan query secara eksplisit.
 > - Akses gratis: buka Google Scholar → cari judul paper → klik [PDF] jika tersedia, atau akses lewat campus VPN
 
-**Topik riset:** Deteksi anomali jaringan dengan SMOTE
+**Topik riset:** Deteksi anomali jaringan dengan SMOTE pada dataset CIC-IDS2017
 **Query pencarian:** ("anomaly detection") AND ("SMOTE") AND ("machine learning")
 **Database:** Google Scholar
 
@@ -141,7 +144,7 @@ Gunakan topik riset dari WS-02. Cari minimal 5 paper relevan menggunakan databas
 | 5 | Study D | 2020 | Decision Tree | Trafik jaringan | Cepat | Kurang akurat |
 
 **Pola yang terlihat — Metode dominan:** SMOTE + ML
-**Limitasi yang berulang:** Data sintetis & tidak realistis
+**Limitasi yang berulang:** Data sintetis, distribusi data berubah, dan potensi overfitting.
 
 ---
 
