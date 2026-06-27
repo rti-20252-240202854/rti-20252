@@ -80,7 +80,7 @@ Jika variabel tidak bisa di-map ke komponen apapun → arsitektur perlu didesain
 ```
 SYSTEM-EXPERIMENT MAPPING
 
-Research Question: apakah penggunaan SMOTE dapat meningkatkan performa Random Forest pada deteksi anomali jaringan dibandingkan Random Forest tanpa SMOTE berdasarkan akurasi, presisi, recall, dan F1-score?
+Research Question: Bagaimana pengaruh penggunaan SMOTE terhadap performa Random Forest pada dataset CIC-IDS2017 dibandingkan Random Forest tanpa SMOTE berdasarkan accuracy, precision, recall, dan F1-score?
 
 Variable → Component Mapping:
 | Variabel | Tipe | Komponen Sistem | Cara Manipulasi/Pengukuran |
@@ -96,8 +96,8 @@ Variable → Component Mapping:
   [v] Reproducibility — Setup bisa direkonstruksi
 
 Experimental Setup:
-  Input data     : dataset trafik jaringan
-  Parameter      : parameter random fores dibuat tetap
+  Input data     : dataset CIC-IDS2017.
+  Parameter      : parameter Random Forest dan pembagian data training-testing dibuat tetap pada setiap eksperimen.
   Output format  : akurasi,presisi,recal, f1 score
 ```
 
@@ -107,13 +107,13 @@ Experimental Setup:
 
 Gunakan RQ dan variabel dari WS-05. Petakan ke komponen sistem.
 
-**RQ:** apakah penggunaan SMOTE dapat meningkatkan performa random forest pada deteksi anomali jaringan dibandingkan tanpa SMOTE?
+**RQ:** Bagaimana pengaruh penggunaan SMOTE terhadap performa Random Forest pada dataset CIC-IDS2017 dibandingkan Random Forest tanpa SMOTE berdasarkan accuracy, precision, recall, dan F1-score?
 
 | Variabel | Tipe | Komponen Sistem | Cara Manipulasi / Pengukuran |
 |----------|------|-----------------|---------------------------|
 | pengggunaan SMOTE | IV | modul prepocessing | ON/OFF SMOTE |
 | performa model | DV | modul evaluasi | menghitung akurasi,presisi,recall,f1 dcore |
-| dataset dan parameter RF | CV | config sistem | dibuat sama |
+| dataset CIC-IDS2017, parameter Random Forest, dan pembagian data | CV | config sistem | dibuat sama |
 
 **Apakah semua variabel bisa di-map?** [v] Ya / [ ] Tidak
 > Jika tidak, komponen apa yang perlu ditambahkan? _________
@@ -147,11 +147,11 @@ Jika sistem memiliki 3 komponen utama, rencanakan ablation study.
 | Kondisi | Komponen A (SMOTE) | Komponen B (Random Forest) | Komponen C (Prepoccesing) | Hasil yang Diharapkan |
 |---------|-----------|-----------|-----------|----------------------|
 | Full | ✅ | ✅ | ✅ | performa terbaik |
-| – A | ❌ (ganti RF) | ✅ | ✅ | performa menurun |
-| – B | ✅ | ❌ (tanpa temporal) | ✅ | klasifikasi berubah |
-| – C | ✅ | ✅ | ❌ (tanpa normalisasi) | kurang optimal |
+| – A | ❌ (tanpa SMOTE) | ✅ | ✅ | performa menurun |
+| – B | ✅ | ❌ | ✅ | klasifikasi berubah |
+| – C | ✅ | ✅ | ❌ | kurang optimal |
 
-**Komponen mana yang diprediksi paling berkontribusi?** SMOTE
+**Komponen mana yang diprediksi paling berkontribusi?** Diperkirakan SMOTE berkontribusi terhadap peningkatan performa karena membantu menyeimbangkan distribusi data.
 **Mengapa?**
 > membantu menyeimbangkan data
 
