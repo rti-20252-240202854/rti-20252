@@ -133,7 +133,7 @@ Rumuskan pasangan hipotesis dari RQ di Latihan 1.
 | H₀ | tidak ada peningkatan signifikan performa Random Forest setelah menggunakan SMOTE |
 | H₁ | ada peningkatan signifikan performa random fores setelah menggunakan SMOTE |
 | Metrik | akurasi,presisi,recal,f1 score |
-| Threshold | 5% peningkatan f1 score |
+| Threshold | Tidak ditentukan secara spesifik, peningkatan performa dinilai berdasarkan perbandingan nilai accuracy, precision, recall, dan F1-score. |
 | Justifikasi threshold | karena F1-score cukup penting untuk evaluasi deteksi anomali |
 
 **Apakah hipotesis ini falsifiable?** [v] Ya / [ ] Tidak
