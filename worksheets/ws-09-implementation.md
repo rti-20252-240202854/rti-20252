@@ -73,32 +73,37 @@ Mengandalkan "install library terbaru" berbahaya: versi berbeda = perilaku berbe
 EXPERIMENT SETUP DOCUMENTATION
 
 Hardware:
-  CPU     : ____________________
-  RAM     : ____________________
-  GPU     : ____________________
-  Storage : ____________________
+  CPU     : Intel Core i7-10510U @ 1.80 GHz (4 Core, 8 Thread)
+  RAM     : 16 GB DDR4
+  GPU     : AMD Radeon 625 2 GB + Intel UHD Graphics
+  Storage : SSD 238 GB
 
 Software:
-  OS        : ____________________
-  Runtime   : ____________________
-  Framework : ____________________
+  OS        : Microsoft Windows 11 Pro 64-bit
+  Runtime   : Python 3.13.14
+  Framework : Scikit-learn dan Imbalanced-learn
 
 Dependencies:
-| Library | Version | Sumber | Hash/Checksum |
-|---------|---------|--------|---------------|
-|         |         |        |               |
-|         |         |        |               |
+| Library           | Version | Sumber | Hash/Checksum |
+|-------------------|---------|---------|---------------|
+| pandas            | 1.5.1   | pip     | - |
+| numpy             | 2.3.5   | pip     | - |
+| scikit-learn      | 1.9.0   | pip     | - |
+| imbalanced-learn  | 0.14.2  | pip     | - |
+| matplotlib        | 3.10.8  | pip     | - |
 
 Konfigurasi:
-  Config file     : ____________________
-  Random seed     : ____________________
-  Hyperparameters : ____________________
+  Config file     : config.py
+  Random seed     : 42
+  Hyperparameters :  - n_estimators = 100
+                     - random_state = 42
+                     - test_size = 0.2
 
 Reproducibility Check:
-  [ ] Dependency terdokumentasi (requirements.txt / lock file)
-  [ ] Seed ditetapkan di semua level (Python, NumPy, framework)
-  [ ] Config di version control
-  [ ] README instruksi reproduksi lengkap
+  [v] Dependency terdokumentasi (requirements.txt / lock file)
+  [v] Seed ditetapkan di semua level (Python, NumPy, framework)
+  [v] Config di version control
+  [v] README instruksi reproduksi lengkap
 ```
 
 ---
@@ -109,23 +114,23 @@ Dokumentasikan environment untuk eksperimen Anda (boleh environment saat ini ata
 
 | Komponen | Spesifikasi |
 |----------|------------|
-| CPU | *Contoh: Intel Core i7-12700H, 14 Core* |
-| RAM | *Contoh: 32 GB DDR5* |
-| GPU | *Contoh: NVIDIA RTX 3060 6GB / CPU-only jika tidak ada GPU* |
-| OS | *Contoh: Ubuntu 22.04 LTS / Windows 11* |
-| Runtime | |
-| Framework | |
-| Random Seed | |
+| CPU       | Intel Core i7-10510U @ 1.80 GHz |
+| RAM       | 16 GB DDR4 |
+| GPU       | AMD Radeon 625 2 GB + Intel UHD Graphics |
+| OS        | Microsoft Windows 11 Pro 64-bit |
+| Runtime   | Python 3.13.14 |
+| Framework | Scikit-learn dan Imbalanced-learn |
+| Random Seed | 42 |
 
 **Dependencies (minimal 5):**
 
 | Library | Version | Alasan Dibutuhkan |
 |---------|---------|-------------------|
-| *Contoh: scikit-learn* | *1.3.2* | *Klasifikasi + evaluasi metrik* |
-| | | |
-| | | |
-| | | |
-| | | |
+| pandas            | 1.5.1   | Membaca dan memproses dataset CIC-IDS2017     |
+| numpy             | 2.3.5   | Operasi numerik                               |
+| scikit-learn      | 1.9.0   | Implementasi Random Forest dan evaluasi model |
+| imbalanced-learn  | 0.14.2  | Implementasi SMOTE                            |
+| matplotlib        | 3.10.8  | Visualisasi hasil eksperimen                  |
 
 ---
 
@@ -135,9 +140,10 @@ Rancang tes repeatability sederhana: jalankan kode yang sama 3× di environment 
 
 | Run | Seed | Metrik Utama | Hasil Sama? |
 |-----|------|-------------|-------------|
-| 1 | *Contoh: 42* | *Contoh: Accuracy* | — |
-| 2 | | | [ ] Ya / [ ] Tidak |
-| 3 | | | [ ] Ya / [ ] Tidak |
+| 1 | 42 | F1-score | rencana |
+| 2 | 42 | F1-score | rencana |
+| 3 | 42 | F1-score | rencana |
+Pengujian repeatability akan dilaksanakan setelah implementasi model selesai pada tahap eksekusi eksperimen yang ada pada WS-10. Hasil aktual akan diperbarui setelah eksperimen dijalankan.
 
 **Jika hasil berbeda, kemungkinan penyebab:**
 
@@ -162,25 +168,31 @@ ___________________________________________________
 Tulis README minimum untuk eksperimen Anda (6 komponen wajib).
 
 ```
-# Judul Eksperimen: ____________________
+# Judul Eksperimen: Pengaruh Penggunaan SMOTE terhadap Performa Random Forest pada Dataset CIC-IDS2017.
 
 ## 1. Environment
-> (Salin spesifikasi dari Latihan 1)
+      Windows 11 Pro 64-bit
+      Python 3.13.14
+      Scikit-learn 1.9.0
+      Imbalanced-learn 0.14.2
 
 ## 2. Installation
-> (Langkah instalasi, misal: "pip install -r requirements.txt")
+      pip install -r requirements.txt
 
 ## 3. Data
-> (Deskripsi data: sumber, format, ukuran)
+      Dataset menggunakan CIC-IDS2017 yang berisi trafik normal dan berbagai jenis serangan jaringan.
 
 ## 4. Execution
-> (Command untuk menjalankan eksperimen)
+      python main.py
 
 ## 5. Configuration
-> (File config yang digunakan + parameter kunci)
+      config.py
+      Random seed = 42
+      n_estimators = 100
+      test_size = 0.2
 
 ## 6. Expected Output
-> (Contoh output yang diharapkan + format)
+      Nilai accuracy, precision, recall, dan F1-score dari Random Forest tanpa SMOTE dan Random Forest dengan SMOTE.
 ```
 
 ---
