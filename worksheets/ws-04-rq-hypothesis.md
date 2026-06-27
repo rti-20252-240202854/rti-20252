@@ -71,11 +71,11 @@ Gap Statement  :Banyak penelitian menggunakan SMOTE untuk meningkatkan performa 
 
 Research Question:
   Tipe         : [ ] Comparison  [v] Improvement  [ ] Exploratory
-  Formulasi    : Apakah penggunaan SMOTE dapat meningkatkan performa Random Forest pada deteksi anomali jaringan dibandingkan Random Forest tanpa SMOTE berdasarkan akurasi, precision, recall, dan F1-score?
+  Formulasi    : Bagaimana pengaruh penggunaan SMOTE terhadap performa Random Forest pada dataset CIC-IDS2017 dibandingkan Random Forest tanpa SMOTE berdasarkan accuracy, precision, recall, dan F1-score?
   Variabel IV  : Penggunaan SMOTE
   Variabel DV  : Performa model Random Forest
   Metrik       : Akurasi, precision, recall, dan F1-score
-  Dataset      : Dataset trafik jaringan
+  Dataset      : CIC-IDS2017
   Baseline     : Random Forest tanpa SMOTE
 
 Quality Check RQ:
@@ -86,14 +86,14 @@ Quality Check RQ:
   [v] Memerlukan eksperimen (bukan hanya survei literatur)
 
 Contribution Statement:
-  Apa yang baru diketahui : Mengetahui apakah peningkatan performa setelah penggunaan SMOTE benar-benar efektif atau hanya dipengaruhi perubahan distribusi data.
+  Apa yang baru diketahui : Mengetahui pengaruh penggunaan SMOTE terhadap performa Random Forest pada dataset CIC-IDS2017 serta mengevaluasi apakah peningkatan performa dipengaruhi oleh perubahan distribusi data akibat oversampling..
   Jenis kontribusi        : [v] Improvement  [ ] Comparison  [ ] Novel approach
   Gap yang diisi          : Data Gap dan Performance gap pada penggunaan SMOTE dalam deteksi anomali jaringan.
 
 Hypothesis Pair:
-  H₀ : Penggunaan SMOTE tidak memberikan peningkatan signifikan terhadap performa
-  H₁ : Penggunaan SMOTE memberikan peningkatan signifikan terhadap performa
-  Threshold              : peningkatan minimal 5% pada F1-score
+  H₀ : Penggunaan SMOTE tidak memberikan peningkatan signifikan terhadap performa Random Forest pada dataset CIC-IDS2017.
+  H₁ : Penggunaan SMOTE memberikan peningkatan signifikan terhadap performa Random Forest pada dataset CIC-IDS2017.
+  Threshold              : Tidak ditentukan secara spesifik, peningkatan performa dinilai berdasarkan perbedaan nilai accuracy, precision, recall, dan F1-score antara model tanpa SMOTE dan dengan SMOTE.
   Justifikasi threshold  : karena F1-score dianggap cukup mewakili keseimbangan precision dan recall dalam deteksi anomali.
 ```
 
@@ -115,7 +115,7 @@ Gunakan gap yang ditemukan di WS-03. Transformasikan menjadi Research Question.
 | Metode spesifik | ya | random forest + SMOTE |
 | Metrik terukur | ya | akurasi,presisi,recall,f1-score |
 | Baseline | ya | random forest tanpa SMOTE |
-| Dataset/konteks | ya | dataset trafik jaringan |
+| Dataset/konteks | ya | dataset CIC-IDS2017. |
 
 **Tipe RQ:** [ ] Comparison / [v] Improvement / [ ] Exploratory
 
@@ -152,8 +152,8 @@ Lengkapi rantai dari RQ hingga metode analisis.
 | Variable (IV) | penggunaan SMOTE |
 | Variable (DV) | performa random forest |
 | Metric | akurasi,presisi,recal,f1 score |
-| Data source | dataset trafik jaringsn |
-| Analysis method | perbandingan performa model |
+| Data source | dataset CIC-IDS2017. |
+| Analysis method | membandingkan nilai accuracy, precision, recall, dan F1-score antara Random Forest tanpa SMOTE dan Random Forest dengan SMOTE. |
 
 **Apakah rantai lengkap?** [v] Ya / [ ] Tidak
 > Jika tidak, tahap mana yang perlu direvisi? ______________
