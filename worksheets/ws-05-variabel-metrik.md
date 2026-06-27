@@ -66,13 +66,13 @@ Metrik harus ditentukan **sebelum** eksperimen. Memilih metrik setelah melihat d
 ```
 VARIABLE & METRIC DEFINITION
 
-Research Question: apakah penggunaan SMOTE dapat meningkatkan performa Random Forest pada deteksi anomali jaringan dibandingkan random fores tanpa SMOTE berdasarkan akurasi, presisi, recal, dan f1-score?
+Research Question: Bagaimana pengaruh penggunaan SMOTE terhadap performa Random Forest pada dataset CIC-IDS2017 dibandingkan Random Forest tanpa SMOTE berdasarkan accuracy, precision, recall, dan F1-score?
 
 | Variabel | Tipe | Konsep | Metrik | Skala | Satuan | Cara Mengukur | Justifikasi |
 |----------|------|--------|--------|-------|--------|---------------|-------------|
 | penggunaan SMOTE | IV   | teknik preprocessing data | dengan/tanpa SMOTE | nomminal | - | membandingkan 2 kondisi model | karena fokus penelitian ada di pengaruh SMOTE |
 | performa model | DV   | kemampuan model mendeteksi anomali | akurasi,presisi,recal,f1 score | rasio | % | menghitung evaluasi model | metrik ini umum dipakai pada deteksi anomali |
-| dataset dan parameter model | CV   | kondisi pengujian tetap | dataset dan model seting yang sama | normal | - | menggunakan dataset dan parameter yang sama | agar hasil perbandingan lebih adil |
+| dataset CIC-IDS2017, parameter Random Forest, dan pembagian data | CV   | menjaga konsistensi kondisi pengujian | dataset dan model seting yang sama | nominal | - | menggunakan dataset dan parameter yang sama | agar hasil perbandingan lebih adil |
 
 Alignment Check:
   RQ → Concept → Variable → Metric → Data → Result
@@ -87,13 +87,13 @@ Alignment Check:
 
 Gunakan RQ dari WS-04. Definisikan variabel dan metriknya.
 
-**RQ:** apakah penggunaan SMOTE dapat meningkatkan performa Random Forest pada deteksi anomali jaringan dibandingkan Random Forest tanpa SMOTE berdasarkan akurasi, precision, recall, dan F1-score?
+**RQ:** Bagaimana pengaruh penggunaan SMOTE terhadap performa Random Forest pada dataset CIC-IDS2017 dibandingkan Random Forest tanpa SMOTE berdasarkan accuracy, precision, recall, dan F1-score?
 
 | Variabel | Tipe | Konsep Abstrak | Metrik Konkret | Skala (NOIR) | Satuan |
 |----------|------|---------------|----------------|-------------|--------|
-| penggunaan SMOTE | IV | teknik balancing data | dengan/tanpa SMOTE | nominal | - |
+| penggunaan SMOTE | IV | teknik oversampling untuk mengatasi ketidakseimbangan data | dengan/tanpa SMOTE | nominal | - |
 | performa model | DV | kemampuan deteksi anomali | akurasi,presisi,recal,f1 score | rasio | % |
-| dataset & parameter | CV | konsisten pengujian | dataset dan parameter tetap | nominal | - |
+| dataset CIC-IDS2017, parameter Random Forest, dan pembagian data | CV | konsisten pengujian | dataset dan parameter tetap | nominal | - |
 
 **Apakah ada lompatan logis dalam rantai?** [ ] Ya / [v] Tidak
 > Jika ya, di mana? ____________________________________
@@ -124,10 +124,10 @@ Bayangkan data yang akan dikumpulkan dari eksperimen. Evaluasi 4 dimensi kualita
 
 | Dimensi | Pertanyaan | Jawaban | Strategi Mitigasi |
 |---------|-----------|---------|------------------|
-| Completeness | *Apakah semua data point terkumpul?* | ada data yang bisa hikang | mengecek ulang dataset |
+| Completeness | *Apakah semua data point terkumpul?* | ada kemungkinan data hilang atau tidak lengkap. | mengecek ulang dataset |
 | Consistency | *Apakah ada kontradiksi internal?* | bisa terjadi perbedaan label data | validasi label dataset |
 | Validity | *Apakah benar-benar mengukur yang dimaksud?* | betul,karena menggunakan metrik model evaluasi | menggunakan metrik yang umum dipakai |
-| Representativeness | *Apakah sampel mewakili populasi target?* | belum tentu | menggunakan dataset yang beragam |
+| Representativeness | *Apakah sampel mewakili populasi target?* | belum tentu | menggunakan dataset CIC-IDS2017 yang memiliki berbagai jenis serangan jaringan. |
 
 ---
 
