@@ -68,15 +68,15 @@ Ancaman validitas harus diidentifikasi **sebelum** eksperimen dan mitigasinya di
 ```
 EXPERIMENT DESIGN
 
-Research Question : apakah penggunaan SMOTE dapat meningkatkan performa random forest pada deteksi anomali jaringan dibandingkan tanpa SMOTE berdasarkan akurasi, presisi, recal, dan f1 score?
-Hypothesis        : penggunaan SMOTE memberikan peningkatan performa pada random forest dalam mendeteksi anomali jaringan
+Research Question : Bagaimana pengaruh penggunaan SMOTE terhadap performa Random Forest pada dataset CIC-IDS2017 dibandingkan Random Forest tanpa SMOTE berdasarkan accuracy, precision, recall, dan F1-score?
+Hypothesis        : Penggunaan SMOTE memberikan peningkatan performa pada Random Forest dalam mendeteksi anomali jaringan pada dataset CIC-IDS2017.
 Tipe Eksperimen   : [v] Comparison  [ ] Ablation  [ ] Parameter
 
 Kondisi Eksperimen:
 | Kondisi | Deskripsi | IV Value | CV Settings |
 |---------|-----------|----------|-------------|
-| Control | random forest tanpa SMOTE | off | dataset dan parameter sama |
-| Treatment | random forest dengan SMOTE | ON | dataset dan parameter sama |
+| Control | random forest tanpa SMOTE | off | Dataset CIC-IDS2017, parameter Random Forest, dan pembagian data training-testing dibuat sama. |
+| Treatment | random forest dengan SMOTE | ON | Dataset CIC-IDS2017, parameter Random Forest, dan pembagian data training-testing dibuat sama. |
 
 Fairness Checklist:
   [v] Dataset identik untuk semua kondisi
@@ -89,15 +89,15 @@ Threat Analysis:
 | Threat Type | Ancaman Spesifik | Mitigasi |
 |-------------|-----------------|----------|
 | Internal    | overfitting karena SMOTE | menggunakan data testing terpisah |
-| External    | dataset kurang mewakili kondisi nyata | menggunakan dataset yang lebih beragam |
+| External    | dataset kurang mewakili kondisi nyata | Mengakui keterbatasan bahwa dataset CIC-IDS2017 belum tentu merepresentasikan seluruh kondisi jaringan nyata. |
 | Construct   | akurasi terlalu dominan | menambahkan presisi,recall,f1 score |
 | Conclusion  | jumlah data kurang | menggunakan dataset yang cukup |
 
 Statistical Plan:
-  Uji statistik   : perbandingan hasil performa model
+  Uji statistik   : Perbandingan nilai accuracy, precision, recall, dan F1-score antara Random Forest tanpa SMOTE dan Random Forest dengan SMOTE.
   Justifikasi      : untuk melihat apakah SMOTE benar-benar meningkatkan performa
   Alpha            : 0.05
-  Effect size min  : 5% peningkatan
+  Effect size min  : Tidak ditentukan secara spesifik, peningkatan dinilai berdasarkan perbedaan nilai metrik evaluasi.
 ```
 
 ---
@@ -111,7 +111,7 @@ Susun desain eksperimen berdasarkan RQ, variabel, dan sistem dari WS-04 sampai W
 
 | Kondisi | Deskripsi | IV Value | CV Settings |
 |---------|-----------|----------|-------------|
-| Control | RF tanpa SMOTE | off | dataset dan prameter tetap |
+| Control | RF tanpa SMOTE | off | Dataset CIC-IDS2017, parameter Random Forest, dan pembagian data dibuat tetap. |
 | Treatment | Rf menggunakan SMOTE | on | dataset dan parameter tetap |
 
 ---
@@ -122,7 +122,7 @@ Evaluasi apakah desain eksperimen di Latihan 1 sudah fair.
 
 | Kriteria | Status | Detail |
 |----------|--------|--------|
-| Dataset identik | v | dataset sama digunakan di semua kondisi |
+| Dataset identik | v | Dataset CIC-IDS2017 yang sama digunakan pada kondisi control dan treatment. |
 | Preprocessing setara | v | proses prepocessing dibuat sama |
 | Tuning effort setara | v | parameter model dibuat tetap |
 | Environment identik | v | pengujian dilakukan pada sistem yang sama |
