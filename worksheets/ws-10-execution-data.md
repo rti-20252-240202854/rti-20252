@@ -68,24 +68,57 @@ Run gagal/anomali tidak boleh dihapus tanpa dokumentasi. Bisa jadi:
 ```
 EXECUTION PLAN
 
-| Run # | Skenario | Seed | Parameter | Status | Waktu | Output File |
-|-------|----------|------|-----------|--------|-------|-------------|
-| 1     |          |      |           |        |       |             |
-| 2     |          |      |           |        |       |             |
-| 3     |          |      |           |        |       |             |
-| ...   |          |      |           |        |       |             |
+| Run # | Skenario   | Seed | Parameter Kunci  | Status |
+| ----- | ---------- | ---- | ---------------- | ------ |
+| 1     | RF + SMOTE | 42   | n_estimators=100 | Done   |
+| 2     | RF + SMOTE | 123  | n_estimators=100 | Done   |
+| 3     | RF + SMOTE | 999  | n_estimators=100 | Done   |
+| 4     | RF + SMOTE | 2025 | n_estimators=100 | Done   |
+| 5     | RF + SMOTE | 777  | n_estimators=100 | Done   |
 
-Jumlah runs per skenario : ____
-Total runs               : ____
+Jumlah runs per skenario : 5
+Total runs               : 5
 
 DATA LOG (per run):
-  Run ID    : ____________________
-  Timestamp : ____________________
-  Skenario  : ____________________
-  Input     : ____________________
-  Output    : ____________________
-  Anomali   : ____________________
-  Catatan   : ____________________
+Run ID    : run-001
+Timestamp : 28-06-2026
+Skenario  : Random Forest + SMOTE
+Input     : Dataset CIC-IDS2017 (Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv)
+Output    : Accuracy=0.999934, Precision=0.999961, Recall=0.999922, F1=0.999941
+Anomali   : Ditemukan nilai Infinity pada dataset dan dilakukan preprocessing.
+Catatan   : Eksperimen dijalankan menggunakan Python 3.13 dan RandomForestClassifier (n_estimators=100).
+
+Run ID    : run-002
+Timestamp : 28-06-2026
+Skenario  : RF + SMOTE
+Input     : CIC-IDS2017
+Output    : Acc=0.999779, Prec=0.999961, Rec=0.999649, F1=0.999805
+Anomali   : Tidak ada
+Catatan   : Seed=123
+
+Run ID    : run-003
+Timestamp : 28-06-2026
+Skenario  : RF + SMOTE
+Input     : CIC-IDS2017
+Output    : Acc=0.999934, Prec=1.000000, Rec=0.999883, F1=0.999941
+Anomali   : Tidak ada
+Catatan   : Seed=999
+
+Run ID    : run-004
+Timestamp : 28-06-2026
+Skenario  : RF + SMOTE
+Input     : CIC-IDS2017
+Output    : Acc=1.000000, Prec=1.000000, Rec=1.000000, F1=1.000000
+Anomali   : Tidak ada
+Catatan   : Seed=2025
+
+Run ID    : run-005
+Timestamp : 28-06-2026
+Skenario  : RF + SMOTE
+Input     : CIC-IDS2017
+Output    : Acc=0.999889, Prec=0.999961, Rec=0.999844, F1=0.999902
+Anomali   : Tidak ada
+Catatan   : Seed=777
 ```
 
 ---
@@ -96,15 +129,15 @@ Susun execution plan untuk eksperimen Anda. Tentukan skenario, jumlah run, dan s
 
 | Run # | Skenario | Seed | Parameter Kunci | Status |
 |-------|----------|------|----------------|--------|
-| *1* | *Contoh: BERT-base, DS-1* | *42* | *lr=2e-5, epoch=10* | *Planned* |
-| *2* | *BERT-base, DS-1* | *123* | *lr=2e-5, epoch=10* | *Planned* |
-| 3 | | | | |
-| 4 | | | | |
-| 5 | | | | |
+| 1     | RF + SMOTE | 42   | n_estimators=100 | Done   |
+| 2     | RF + SMOTE | 123  | n_estimators=100 | Done   |
+| 3     | RF + SMOTE | 999  | n_estimators=100 | Done   |
+| 4     | RF + SMOTE | 2025 | n_estimators=100 | Done   |
+| 5     | RF + SMOTE | 777  | n_estimators=100 | Done   |
 
-**Total skenario:** ____
-**Run per skenario:** ____
-**Total run keseluruhan:** ____
+**Total skenario:** 1
+**Run per skenario:** 5
+**Total run keseluruhan:** 5
 
 ---
 
@@ -115,25 +148,28 @@ Desain format data log untuk eksperimen Anda. Tentukan field apa saja yang akan 
 **Identitas:**
 | Field | Contoh |
 |-------|--------|
-| Run ID | *run-001* |
-| Timestamp | *2025-03-15T10:30:00* |
-| | |
+| Run ID | run-001 |
+| Timestamp | 28-06-2026 |
+| skenario | RF + SMOTE |
 
 **Konfigurasi:**
 | Field | Contoh |
 |-------|--------|
-| Seed | *42* |
-| Code version | *commit abc1234* |
-| | |
+| Seed         | 42                                |
+| Code version | CIC-IDS2017 Friday Afternoon DDoS |
+| n_estimators | 100                               |
+| Test Size    | 0.2                               |
+| Random State | 42                                |
 
 **Hasil:**
 | Metrik | Tipe Data | Range Valid |
 |--------|----------|-------------|
-| *Contoh: Accuracy* | *float* | *0.0 – 1.0* |
-| | | |
-| | | |
+| Accuracy | float | 0–1 |
+| Precision | float | 0-1 |
+| Recall | float | 0-1 |
+| F1-Score | float | 0-1 |
 
-**Format output:** [ ] CSV / [ ] JSON / [ ] Database / [ ] Lainnya: ____
+**Format output:** [v] CSV / [ ] JSON / [ ] Database / [ ] Lainnya: ____
 
 ---
 
@@ -143,10 +179,10 @@ Rencanakan bagaimana menangani anomali. Untuk setiap jenis, tentukan langkah yan
 
 | Jenis Anomali | Contoh | Tindakan |
 |---------------|--------|----------|
-| Run gagal (crash) | *Contoh: OOM pada batch_size=64* | *Contoh: Dokumentasi, re-run batch_size=32, catat perubahan* |
-| Hasil ekstrem | | |
-| Waktu eksekusi anomali | | |
-| Inkonsistensi dengan run lain | | |
+| Run gagal (crash) | Error Infinity pada dataset | Melakukan preprocessing dan mengganti nilai Infinity menjadi NaN lalu mengisi dengan 0 |
+| Hasil ekstrem | Accuracy 100% pada seed 2025 | Tetap dicatat dan dianalisis |
+| Waktu eksekusi anomali | Training lebih lama | Dokumentasi dan pengulangan jika diperlukan |
+| Inkonsistensi dengan run lain | Nilai F1 berbeda sedikit | Menghitung rata-rata dari seluruh run |
 
 **Prinsip:** Detect → Investigate → Document → Decide
 
@@ -157,6 +193,6 @@ Rencanakan bagaimana menangani anomali. Untuk setiap jenis, tentukan langkah yan
 > Pernahkah Anda melaporkan hasil riset/tugas dari single run? Apa risikonya? Bagaimana multiple run mengubah kepercayaan terhadap hasil?
 
 **Pengalaman sebelumnya:**
-> ___________________________________________________
+> Sebelumnya saya sering menggunakan hasil dari satu kali pengujian saja. Setelah melakukan multiple run, saya menyadari bahwa hasil eksperimen dapat sedikit berubah tergantung random seed yang digunakan.
 **Yang akan dilakukan berbeda:**
-> ___________________________________________________
+> Selalu melakukan beberapa kali pengujian dan menggunakan nilai rata-rata agar hasil penelitian lebih valid dan dapat dipercaya.
