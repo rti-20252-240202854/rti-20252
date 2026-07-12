@@ -84,28 +84,28 @@ Metrik-X     ✗      ✗       ✓ ←     ✗        ✗
 ```
 PAPER STRUCTURE CHECKLIST
 
-Title   : ____________________
-Target  : [ ] Jurnal  [ ] Konferensi  [ ] Laporan
+Title   : Pengaruh Penggunaan SMOTE terhadap Performa Random Forest pada Dataset CIC-IDS2017 untuk Deteksi Intrusi
+Target  : [ ] Jurnal  [ ] Konferensi  [v] Laporan
 
 Section Check:
-  [ ] Abstract — masalah, metode, hasil utama, kontribusi (max 250 kata)
-  [ ] Introduction — konteks → gap → RQ → kontribusi → struktur paper
-  [ ] Related Work — concept-centric, gap positioning
-  [ ] Method — reproducible: desain, variabel, metrik, setup, prosedur
-  [ ] Results — tabel + grafik + observasi (tanpa interpretasi)
-  [ ] Discussion — interpretasi, perbandingan, implikasi, limitation
-  [ ] Conclusion — jawaban RQ, kontribusi, future work
+  [v] Abstract — masalah, metode, hasil utama, kontribusi (max 250 kata)
+  [v] Introduction — konteks → gap → RQ → kontribusi → struktur paper
+  [v] Related Work — concept-centric, gap positioning
+  [v] Method — reproducible: desain, variabel, metrik, setup, prosedur
+  [v] Results — tabel + grafik + observasi (tanpa interpretasi)
+  [v] Discussion — interpretasi, perbandingan, implikasi, limitation
+  [v] Conclusion — jawaban RQ, kontribusi, future work
 
 Consistency Matrix:
-  [ ] RQ di Introduction = RQ di Method = RQ di Conclusion
-  [ ] Variabel di Method = variabel di Results
-  [ ] Klaim di Discussion didukung data di Results
-  [ ] Limitasi di Discussion di-address di Conclusion/Future Work
+  [v] RQ di Introduction = RQ di Method = RQ di Conclusion
+  [v] Variabel di Method = variabel di Results
+  [v] Klaim di Discussion didukung data di Results
+  [v] Limitasi di Discussion di-address di Conclusion/Future Work
 
 Writing Quality:
-  [ ] Clarity — mudah dipahami tanpa re-read
-  [ ] Precision — tidak ada istilah ambigu
-  [ ] Conciseness — tidak ada kalimat redundan
+  [v] Clarity — mudah dipahami tanpa re-read
+  [v] Precision — tidak ada istilah ambigu
+  [v] Conciseness — tidak ada kalimat redundan
 ```
 
 ---
@@ -116,13 +116,13 @@ Buat outline paper untuk riset Anda menggunakan struktur IMRAD.
 
 | Section | Konten Utama (2-3 kalimat) | Target Kata |
 |---------|---------------------------|------------|
-| Abstract | *Contoh: Sistem rekomendasi memiliki akurasi tinggi tapi satisfaction rendah. Studi ini menguji CF+context signal. Hasil: satisfaction naik 38% tanpa penurunan RMSE signifikan.* | 200-250 |
-| Introduction | *Contoh: Konteks: gap antara akurasi dan kepuasan pengguna. Gap: tidak ada studi yang mengkombinasikan CF+context. RQ: apakah CF+context meningkatkan satisfaction?* | 500-700 |
-| Related Work | | 700-1000 |
-| Method | | 800-1200 |
-| Results | | 500-800 |
-| Discussion | | 600-900 |
-| Conclusion | | 200-400 |
+| Abstract | Penelitian ini menganalisis pengaruh penggunaan SMOTE terhadap performa Random Forest pada dataset CIC-IDS2017. Evaluasi dilakukan menggunakan Accuracy, Precision, Recall, dan F1-Score melalui lima kali pengujian dengan random seed berbeda. Hasil menunjukkan bahwa SMOTE tidak memberikan peningkatan performa yang signifikan dibandingkan Random Forest tanpa SMOTE. | 200-250 |
+| Introduction | Menjelaskan pentingnya Intrusion Detection System (IDS), permasalahan class imbalance, penggunaan SMOTE, Research Question, tujuan penelitian, dan kontribusi penelitian. | 500-700 |
+| Related Work | Membahas penelitian terdahulu mengenai Random Forest, SMOTE, IDS, serta dataset CIC-IDS2017 dan menunjukkan research gap penelitian ini. | 700-1000 |
+| Method | Menjelaskan dataset, preprocessing, train-test split, Random Forest, SMOTE, multiple run, metrik evaluasi, dan uji statistik yang digunakan. | 800-1200 |
+| Results | Menampilkan hasil Accuracy, Precision, Recall, F1-Score, statistik deskriptif, uji normalitas, uji Wilcoxon, effect size, dan confidence interval. | 500-800 |
+| Discussion | Menginterpretasikan hasil eksperimen, menjawab Research Question, membandingkan dengan penelitian terdahulu, menjelaskan limitation dan implikasi penelitian. | 600-900 |
+| Conclusion | Menyimpulkan bahwa SMOTE tidak memberikan peningkatan performa yang signifikan pada dataset CIC-IDS2017 serta memberikan rekomendasi penelitian selanjutnya. | 200-400 |
 
 ---
 
@@ -130,24 +130,25 @@ Buat outline paper untuk riset Anda menggunakan struktur IMRAD.
 
 Buat consistency matrix untuk memverifikasi internal consistency paper Anda.
 
-|  | Intro | Method | Result | Discussion | Conclusion |
-|--|-------|--------|--------|-----------|-----------|
-| *Contoh: RQ1* | *✓* | *✓* | *✓* | *✓* | *✓* |
-| *Contoh: Metrik-X* | *✗ ←* | *✗ ←* | *✓* | *✗ ←* | *✗ ←* |
-| RQ1 | | | | | |
-| RQ2 | | | | | |
-| Metrik utama | | | | | |
-| Variabel IV | | | | | |
-| Variabel DV | | | | | |
-| Klaim/kontribusi | | | | | |
+|                                     | Intro | Method | Result | Discussion | Conclusion |
+| ----------------------------------- | ----- | ------ | ------ | ---------- | ---------- |
+| **RQ1**                             | ✓     | ✓      | ✓      | ✓          | ✓          |
+| **Metrik Accuracy**                 | ✓     | ✓      | ✓      | ✓          | ✓          |
+| **Metrik Precision**                | ✓     | ✓      | ✓      | ✓          | ✓          |
+| **Metrik Recall**                   | ✓     | ✓      | ✓      | ✓          | ✓          |
+| **Metrik F1-Score**                 | ✓     | ✓      | ✓      | ✓          | ✓          |
+| **Variabel Independen (SMOTE)**     | ✓     | ✓      | ✓      | ✓          | ✓          |
+| **Variabel Dependen (Performa RF)** | ✓     | ✓      | ✓      | ✓          | ✓          |
+| **Kontribusi Penelitian**           | ✓     | ✓      | ✓      | ✓          | ✓          |
+
 
 **Isi setiap sel:** ✓ (ada & konsisten), ✗ (missing), ~ (ada tapi inkonsisten)
 
 **Inkonsistensi yang ditemukan:**
-> ___________________________________________________
+> Tidak ditemukan inkonsistensi antara Research Question, metode, hasil, pembahasan, dan kesimpulan. Seluruh bagian saling mendukung sesuai alur penelitian.
 
 **Tindakan perbaikan:**
-> ___________________________________________________
+> Memastikan seluruh metrik evaluasi yang dijelaskan pada bagian metode juga dilaporkan pada bagian hasil, pembahasan, dan kesimpulan agar konsisten.
 
 ---
 
@@ -156,22 +157,19 @@ Buat consistency matrix untuk memverifikasi internal consistency paper Anda.
 Ambil satu paragraf dari tulisan Anda (atau tulis paragraf baru) dan evaluasi kualitasnya.
 
 **Paragraf asli:**
-> (tempel paragraf Anda di sini)
+> Penelitian ini menggunakan metode Random Forest dan SMOTE pada dataset CIC-IDS2017. Setelah dilakukan pengujian sebanyak lima kali menggunakan random seed yang berbeda, diperoleh hasil bahwa performa Random Forest dengan SMOTE hampir sama dengan Random Forest tanpa S
 
 | Kriteria | Evaluasi | Perbaikan |
 |----------|---------|-----------|
-| Clarity | *Contoh: kalimat ke-3 ambigu — "performa" bisa berarti accuracy atau speed* | *Ubah menjadi: "accuracy meningkat..."* |
-| Precision | | |
-| Conciseness | | |
+| Clarity | Sudah cukup jelas tetapi belum menyebutkan metrik evaluasi. | Tambahkan Accuracy, Precision, Recall, dan F1-Score. |
+| Precision | Belum menyebutkan hasil statistik. | Tambahkan p-value dan effect size. |
+| Conciseness | Sudah ringkas. | Tidak perlu perubahan besar. |
 
 **Paragraf setelah perbaikan:**
-> (tulis paragraf yang sudah diperbaiki)
-
----
+Penelitian ini mengevaluasi pengaruh penggunaan SMOTE terhadap performa algoritma Random Forest pada dataset CIC-IDS2017 menggunakan metrik Accuracy, Precision, Recall, dan F1-Score. Berdasarkan lima kali pengujian dengan random seed yang berbeda, hasil uji Wilcoxon menunjukkan seluruh p-value lebih besar dari 0,05 sehingga tidak terdapat perbedaan performa yang signifikan antara Random Forest dengan dan tanpa SMOTE. Nilai effect size juga menunjukkan bahwa pengaruh penggunaan SMOTE terhadap performa model relatif kecil pada dataset yang digunakan.
 
 ## Refleksi
 
 > Apa perbedaan antara menulis "tentang" riset dan menulis sebagai "argumen" riset? Bagaimana urutan penulisan (Method → Discussion → Introduction) mengubah kualitas tulisan?
 
-> ___________________________________________________
-> ___________________________________________________
+Menulis tentang riset berarti hanya mendeskripsikan proses dan hasil penelitian, sedangkan menulis sebagai argumen riset berarti menyusun alasan yang didukung oleh bukti ilmiah untuk menjawab Research Question. Pendekatan ini membuat setiap bagian saling terhubung dan memperkuat kontribusi penelitian. Menulis dimulai dari Method, kemudian Results dan Discussion, baru Introduction membantu menjaga konsistensi antara tujuan penelitian dengan hasil yang benar-benar diperoleh.
