@@ -66,34 +66,39 @@ Data leakage terjadi ketika informasi dari test set "bocor" ke preprocessing:
 ```
 PREPROCESSING LOG
 
-Dataset           : ____________________
-Jumlah data awal  : ____________________
+Dataset           : CIC-IDS2017
+Jumlah data awal  : 225.745 records
 
 Cleaning:
 | Masalah | Jumlah Kasus | Penanganan | Justifikasi |
 |---------|-------------|------------|-------------|
-| Missing |             |            |             |
-| Duplikat|             |            |             |
-| Error   |             |            |             |
+| Missing |      4      | Nilai NaN diisi dengan 0 (fillna(0)) | Agar tidak terjadi error saat proses training Random Forest. |
+| Duplikat|      0      | Tidak ada tindakan | Tidak ditemukan data duplikat pada dataset yang digunakan. |
+| Error   |      64      | Nilai Infinity dan -Infinity diubah menjadi NaN, kemudian diisi 0 | Random Forest tidak dapat memproses nilai Infinity sehingga perlu dibersihkan terlebih dahulu. |
 
 Transformation:
 | Transformasi | Variabel | Detail | Alasan |
-|-------------|----------|--------|--------|
-|             |          |        |        |
+|-------------   |----------|--------|--------|
+| Label Encoding | Label | Mengubah label kategorikal menjadi numerik menggunakan LabelEncoder | Agar label dapat diproses oleh Random Forest |
+| Train-Test Split | Dataset | Membagi data menjadi 80% data latih dan 20% data uji | Memisahkan data pelatihan dan pengujian |
+| SMOTE | Data training | Menyeimbangkan jumlah kelas pada data latih | Mengurangi ketidakseimbangan kelas (class imbalance) |
 
 Normalization:
-  Metode    : ____________________
-  Alasan    : ____________________
-  Parameter : (dihitung dari: training set / seluruh data)
+  Metode    : tidak dilakukan
+  Alasan    : Random Forest merupakan algoritma berbasis pohon keputusan sehingga tidak memerlukan normalisasi fitur.
+  Parameter : -
 
 Leakage Check:
-  [ ] Parameter normalisasi dari training set saja
-  [ ] Tidak ada informasi test set dalam preprocessing
-  [ ] Cross-validation dilakukan setelah split
+  [v] Parameter normalisasi dari training set saja
+  [v] Tidak ada informasi test set dalam preprocessing
+  [v] Cross-validation dilakukan setelah split
 
-Jumlah data akhir : ____________________
-Script tersedia   : [ ] Ya → path: ____ | [ ] Belum
-```
+Jumlah data akhir : 225.745 records
+Script tersedia   : [v] Ya | [ ] Belum
+Path :
+src/preprocessing.py
+src/train_test_split.py
+src/rf_smote.py
 
 ---
 
@@ -103,14 +108,14 @@ Periksa dataset Anda (atau dataset contoh) dan dokumentasikan masalah yang ditem
 
 | Masalah | Jumlah Kasus | Penanganan | Justifikasi |
 |---------|-------------|------------|-------------|
-| *Contoh: Missing di kolom "label"* | *12 dari 500 (2.4%)* | *Listwise deletion* | *< 5%, distribusi random (MCAR)* |
-| | | | |
-| | | | |
+| Nilai Infinity | Ditemukan pada beberapa fitur | Diubah menjadi NaN lalu diisi 0 | Agar model dapat memproses seluruh data |
+| Missing Value | Berasal dari konversi Infinity | Diisi dengan nilai 0 | Menghindari error saat training |
+| Duplikat | Tidak ditemukan | Tidak ada tindakan | Dataset tetap konsisten |
 | | | | |
 
-**Jumlah data sebelum cleaning:** ____
-**Jumlah data setelah cleaning:** ____
-**Persentase data yang hilang/berubah:** ____%
+**Jumlah data sebelum cleaning:** 225.745 records
+**Jumlah data setelah cleaning:** 225.745 records
+**Persentase data yang hilang/berubah:** 0 %
 
 ---
 
@@ -120,18 +125,16 @@ Tentukan apakah data Anda perlu normalisasi, dan jika ya, metode apa yang tepat.
 
 | Variabel | Range Asli | Distribusi | Outlier? | Metode Normalisasi | Alasan |
 |----------|-----------|-----------|----------|-------------------|--------|
-| *Contoh: response_time* | *0.1 – 45.2s* | *Right-skewed* | *Ya (45.2s)* | *Robust scaling* | *Ada outlier, perlu robust* || *Contoh: accuracy_score* | *0.72 – 0.95* | *Normal, narrow* | *Tidak* | *Tidak perlu* | *Sudah dalam [0,1], metode berbasis distance tidak digunakan* || | | | | | |
-| | | | | | |
+| Fitur trafik jaringan | Bervariasi | Beragam | ada | Tidak dilakukan | Random Forest tidak memerlukan normalisasi fitur |
 
-**Apakah normalisasi diperlukan?** [ ] Ya / [ ] Tidak
+**Apakah normalisasi diperlukan?** [ ] Ya / [v] Tidak
 **Justifikasi:**
-> ___________________________________________________
+> Normalisasi tidak dilakukan karena algoritma Random Forest tidak dipengaruhi oleh perbedaan skala antar fitur. Oleh karena itu, proses normalisasi tidak diperlukan pada penelitian ini.
 
 **Leakage check:**
-- [ ] Parameter dihitung dari training set saja
-- [ ] Normalisasi diterapkan setelah train-test split
-
----
+- [v] Parameter dihitung dari training set saja
+- [v] Normalisasi diterapkan setelah train-test split
+Walaupun normalisasi tidak dilakukan, proses pembagian data train-test telah dilakukan sebelum SMOTE sehingga tidak terjadi data leakage.
 
 ## Latihan 3 — Preprocessing Report
 
@@ -140,16 +143,16 @@ Buat ringkasan preprocessing lengkap — dokumentasi yang cukup bagi orang lain 
 ```
 PREPROCESSING SUMMARY
 
-1. Dataset: ____________________
-2. Data awal: ____ records, ____ features
+1. Dataset: CIC-IDS2017 (Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv)
+2. Data awal: 225.745 records, 79 features
 3. Cleaning:
-   - Missing values: ____ kasus, metode: ____
-   - Duplikat: ____ kasus, tindakan: ____
-   - Error: ____ kasus, tindakan: ____
-4. Transformation: ____________________
-5. Normalisasi: ____ (metode), parameter dari ____
-6. Data akhir: ____ records, ____ features
-7. Leakage check: [ ] Lulus / [ ] Ada masalah
+   - Missing values: Ditangani dengan pengisian nilai 0 setelah konversi Infinity
+   - Duplikat: Tidak ditemukan.
+   - Error: Nilai Infinity diubah menjadi NaN kemudian diisi dengan 0.
+4. Transformation: Label Encoding, Train-Test Split (80:20), dan SMOTE pada data training.
+5. Normalisasi: Tidak dilakukan karena Random Forest tidak memerlukan normalisasi fitur._
+6. Data akhir: 225.745 records, 79 features
+7. Leakage check: [v] Lulus / [ ] Ada masalah
 ```
 
 ---
@@ -157,6 +160,4 @@ PREPROCESSING SUMMARY
 ## Refleksi
 
 > Apakah Anda pernah melakukan normalisasi "karena biasa dilakukan" tanpa mempertimbangkan apakah benar-benar diperlukan? Apa risiko over-preprocessing?
-
-> ___________________________________________________
-> ___________________________________________________
+Sebelumnya saya menganggap normalisasi selalu diperlukan dalam setiap penelitian machine learning. Setelah mempelajari materi ini, saya memahami bahwa preprocessing harus disesuaikan dengan karakteristik algoritma yang digunakan. Pada penelitian ini, normalisasi tidak dilakukan karena Random Forest tidak dipengaruhi oleh skala fitur. Selain itu, preprocessing yang berlebihan dapat mengubah karakteristik data dan berpotensi memengaruhi hasil penelitian.
