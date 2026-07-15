@@ -6,7 +6,7 @@ Catatan kronologis pelaksanaan tiap tahap (sumber: riwayat commit git & dokumen 
 
 | Tanggal | Tahap | Aktivitas | Referensi |
 |---|---|---|---|
-| 2026-06-12 s.d. 2026-06-13 (commit 01:05) | Tahap 1 & 2 | Perancangan arsitektur/skema database; implementasi API Gateway Go (Echo) — clean architecture, migrasi Sqitch, seed script, docker-compose, verifikasi end-to-end (`CACHE_MODE=none`/`hybrid`, fail-closed/fail-open) | [09-docs/tahap-1-arsitektur-dan-skema-database.md](../09-docs/tahap-1-arsitektur-dan-skema-database.md), [09-docs/tahap-2-implementasi-gateway.md](../09-docs/tahap-2-implementasi-gateway.md) |
+| 2026-07-05 | Tahap 1 | Studi literatur mengenai Intrusion Detection System (IDS), Random Forest, SMOTE, serta dataset CIC-IDS2017. Menentukan topik penelitian dan Research Question. | [09-docs/tahap-1-arsitektur-dan-skema-database.md](../09-docs/tahap-1-arsitektur-dan-skema-database.md), [09-docs/tahap-2-implementasi-gateway.md](../09-docs/tahap-2-implementasi-gateway.md) |
 | 2026-06-13 01:05 | Tahap 3 | Implementasi skrip k6 (`legitimate.js`, `attack.js`, `mixed.js`), runner & monitor resource | [09-docs/tahap-3-pengujian-k6.md](../09-docs/tahap-3-pengujian-k6.md) |
 | 2026-06-12 18:05–18:59 (≈54 menit) | Tahap 3 | Eksekusi matrix penuh 50 run (2 `CACHE_MODE` × 5 `traffic_variant` × 5 replikasi), seluruhnya `k6_exit_code = 0` | commit "Mark Tahap 3 complete after running full 50-run k6 matrix" (2026-06-13 02:00) |
 | 2026-06-13 07:41 | Tahap 4 | Pipeline analisis Python (`run_all.py`), 6 tabel CSV + 5 figure PNG, dokumen Tahap 4 diperbarui ke status Selesai | [09-docs/tahap-4-analisis-data.md](../09-docs/tahap-4-analisis-data.md), [06-output/](../06-output/) |
