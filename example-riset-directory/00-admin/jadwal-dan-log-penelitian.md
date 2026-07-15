@@ -15,8 +15,11 @@ Catatan kronologis pelaksanaan tiap tahap (sumber: riwayat commit git & dokumen 
 
 ## Status Ringkas
 
-- **Tahap 1–4**: Selesai (dataset final: matrix 400 run / 40 replikasi per kombinasi, 2026-06-15).
-- **Tahap 5**: Konten naskah selesai dengan statistik n=40 (termasuk tinjauan pustaka & verifikasi CVE-2026-48524); menyisakan keputusan bahasa final dan pemindahan ke template jurnal tujuan (dilakukan oleh peneliti).
+Tahap 1 : Selesai (Studi Literatur dan Perumusan Masalah)
+Tahap 2 : Selesai (Perancangan Metode Penelitian)
+Tahap 3 : Selesai (Implementasi Program dan Pengujian)
+Tahap 4 : Selesai (Analisis Statistik)
+Tahap 5 : Selesai (Penyusunan Laporan dan Persiapan Presentasi)
 
 ## Item Tindak Lanjut (Checklist Sebelum Submission)
 
