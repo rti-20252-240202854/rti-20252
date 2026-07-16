@@ -45,7 +45,21 @@ Selain jurnal utama tersebut, penelitian juga didukung oleh berbagai referensi l
 | Jurnal CIC-IDS2017   | Referensi mengenai dataset CIC-IDS2017.                                       |
 | README.md            | Dokumentasi folder studi literatur.                                           |
 
+Keterkaitan dengan Penelitian
+
+Hasil studi literatur digunakan sebagai dasar dalam:
+
+Penyusunan proposal penelitian.
+Penentuan algoritma Random Forest sebagai model klasifikasi.
+Penentuan metode SMOTE sebagai teknik penyeimbangan data.
+Penentuan dataset CIC-IDS2017 sebagai objek penelitian.
+Penyusunan metodologi penelitian.
+Penentuan metrik evaluasi (Accuracy, Precision, Recall, F1-Score).
+Penyusunan analisis statistik menggunakan Shapiro-Wilk Test, Wilcoxon Signed-Rank Test, Effect Size (Cohen's d), dan Confidence Interval 95%.
+Analisis dan pembahasan hasil penelitian.
 ## Berkas
 
 - [matriks-literatur.md](matriks-literatur.md) — matriks literatur lengkap (7 topik dipetakan ke 18 referensi terverifikasi; status verifikasi CVE-2026-48524)
 - [daftar-pustaka.bib](daftar-pustaka.bib) — bibliografi BibTeX (18 entri), siap diimpor ke Mendeley
+
+
