@@ -21,11 +21,13 @@ Salah satu metode yang banyak digunakan untuk mengatasi permasalahan tersebut ad
 Berdasarkan kondisi tersebut, penelitian ini bertujuan untuk menganalisis pengaruh penggunaan SMOTE terhadap performa algoritma Random Forest menggunakan dataset CIC-IDS2017 melalui beberapa skenario pengujian, evaluasi statistik, serta analisis signifikansi hasil penelitian.
 
 Rumusan Masalah
+
 Bagaimana implementasi algoritma Random Forest untuk mendeteksi intrusi pada dataset CIC-IDS2017?
 Bagaimana pengaruh penerapan SMOTE terhadap performa Random Forest berdasarkan Accuracy, Precision, Recall, dan F1-Score?
 Apakah terdapat perbedaan performa yang signifikan antara Random Forest tanpa SMOTE dan Random Forest dengan SMOTE berdasarkan uji statistik?
 
 Tujuan Penelitian
+
 Mengimplementasikan algoritma Random Forest untuk klasifikasi intrusi menggunakan dataset CIC-IDS2017.
 Menerapkan metode SMOTE sebagai teknik penyeimbangan data sebelum proses pelatihan model.
 Mengevaluasi performa model menggunakan metrik Accuracy, Precision, Recall, dan F1-Score.
