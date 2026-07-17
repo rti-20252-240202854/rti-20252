@@ -24,6 +24,7 @@ Dataset dapat diperoleh melalui situs resmi Canadian Institute for Cybersecurity
 Sumber Dataset
 
 Canadian Institute for Cybersecurity (CIC)
+
 Dataset: CIC-IDS2017
 
 Setelah diunduh, letakkan dataset pada struktur folder berikut:
@@ -48,16 +49,23 @@ Eksperimen dilakukan sebanyak lima kali menggunakan random seed berbeda untuk me
 Random seed yang digunakan:
 
 42
+
 123
+
 777
+
 999
+
 2025
 
 Setiap eksperimen menghasilkan nilai:
 
 Accuracy
+
 Precision
+
 Recall
+
 F1-Score
 
 Seluruh hasil digunakan sebagai input analisis statistik.
