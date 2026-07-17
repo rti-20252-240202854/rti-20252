@@ -17,19 +17,19 @@ Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
 
 Subset tersebut berisi lalu lintas jaringan normal dan serangan Distributed Denial of Service (DDoS) yang digunakan sebagai data klasifikasi.
 
-Cara Memperoleh Dataset
+Cara Memperoleh Dataset:
 
 Dataset dapat diperoleh melalui situs resmi Canadian Institute for Cybersecurity (CIC).
 
-Sumber Dataset
+Sumber Dataset:
 
-Canadian Institute for Cybersecurity (CIC)
+-Canadian Institute for Cybersecurity (CIC)
 
-Dataset: CIC-IDS2017
+-Dataset: CIC-IDS2017
 
-Setelah diunduh, letakkan dataset pada struktur folder berikut:
+-Setelah diunduh, letakkan dataset pada struktur folder berikut:
 
-data/CIC_IDS2017/Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
+-data/CIC_IDS2017/Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
 
 Selanjutnya sesuaikan path dataset pada file konfigurasi atau source code apabila diperlukan.
 
@@ -70,27 +70,27 @@ F1-Score
 
 Seluruh hasil digunakan sebagai input analisis statistik.
 
-Keterkaitan dengan Penelitian
+-Keterkaitan dengan Penelitian
 
-Data pada folder ini digunakan sebagai dasar dalam:
+-Data pada folder ini digunakan sebagai dasar dalam:
 
-Pelatihan model Random Forest.
+-Pelatihan model Random Forest.
 
-Implementasi SMOTE pada data training.
+-Implementasi SMOTE pada data training.
 
-Evaluasi performa model.
+-Evaluasi performa model.
 
-Perbandingan Random Forest sebelum dan sesudah SMOTE.
+-Perbandingan Random Forest sebelum dan sesudah SMOTE.
 
-Analisis statistik menggunakan Shapiro-Wilk Test.
+-Analisis statistik menggunakan Shapiro-Wilk Test.
 
-Pengujian hipotesis menggunakan Wilcoxon Signed-Rank Test.
+-Pengujian hipotesis menggunakan Wilcoxon Signed-Rank Test.
 
-Perhitungan Effect Size (Cohen's d).
+-Perhitungan Effect Size (Cohen's d).
 
-Perhitungan Confidence Interval 95%.
+-Perhitungan Confidence Interval 95%.
 
-Penyusunan pembahasan dan kesimpulan penelitian.
+-Penyusunan pembahasan dan kesimpulan penelitian.
 
 ## Catatan
 
