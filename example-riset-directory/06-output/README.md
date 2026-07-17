@@ -1,30 +1,89 @@
 # 06-output
 
-Hasil olahan data & visualisasi — **Tahap 4** (lihat [../09-docs/tahap-4-analisis-data.md](../09-docs/tahap-4-analisis-data.md)).
+Folder ini berisi hasil pengolahan data, evaluasi model, visualisasi, serta analisis statistik yang dihasilkan selama penelitian "Analisis Pengaruh Synthetic Minority Over-sampling Technique (SMOTE) terhadap Performa Algoritma Random Forest pada Deteksi Intrusi Menggunakan Dataset CIC-IDS2017".
 
-Dihasilkan oleh `05-kode/analysis/run_all.py` dari data mentah `04-data/` (matrix 400 run, 40 replikasi).
+Seluruh output dihasilkan dari source code pada folder 05-kode, kemudian digunakan sebagai dasar analisis hasil penelitian dan penyusunan pembahasan.
+
+Dataset CIC-IDS2017
+        │
+        ▼
+Preprocessing Data
+        │
+        ▼
+Random Forest
+(Random Forest + SMOTE)
+        │
+        ▼
+Multiple Run (5 Random Seed)
+        │
+        ▼
+Evaluasi Model
+        │
+        ▼
+Analisis Statistik
+        │
+        ▼
+Visualisasi Hasil
 
 ## tables/
+Folder ini berisi hasil evaluasi model dalam bentuk tabel.
+| File                           | Isi                                                                              |
+| ------------------------------ | -------------------------------------------------------------------------------- |
+| **hasil_rf_tanpa_smote.py**   | Hasil evaluasi Random Forest tanpa SMOTE.                                        |
+| **hasil_rf_smote.py**         | Hasil evaluasi Random Forest dengan SMOTE.                                       |
+| **multiple_run.py**           | Rekapitulasi lima kali eksperimen menggunakan random seed berbeda.               |
+|                         |
 
-| File | Isi |
-|---|---|
-| `descriptive_stats.csv` | Statistik deskriptif (latensi avg/p90/p95/max, RPS, failed/checks rate) per (cache_mode, traffic_variant), mean±std atas 40 replikasi |
-| `descriptive_stats_mixed_scenarios.csv` | Breakdown latensi legitimate vs attack untuk traffic_variant `mixed-unique`/`mixed-pool` |
-| `dperf.csv` | $D_{perf}$ = (T_hybrid − T_none) / T_none × 100% untuk traffic legitimate (baseline & dalam mixed) |
-| `resource_usage.csv` | CPU% & memori (MiB) mean/max per (cache_mode, traffic_variant, container) |
-| `mitigation_effectiveness.csv` | Metrik efektivitas mitigasi dari delta `/metrics` gateway (db queries, cache hit ratio, rate-limit blocked, auth outcome) |
-| `db_query_reduction.csv` | Penurunan total query Postgres hybrid vs none per traffic_variant |
 
 ## figures/
 
-| File | Isi |
-|---|---|
-| `fig_latency_p95.png` | Bar chart `http_req_duration` p95 per traffic_variant: none vs hybrid (mean±std, log scale) |
-| `fig_dperf.png` | Bar chart $D_{perf}$ (avg & p95) untuk 3 perbandingan traffic legitimate |
-| `fig_db_queries_reduction.png` | Bar chart total query Postgres per run: none vs hybrid (log scale) |
-| `fig_postgres_cpu.png` | Bar chart CPU% rata-rata container `gateway-postgres-1`: none vs hybrid |
-| `fig_resource_timeseries.png` | Time-series CPU% `gateway-postgres-1` selama `mixed-pool` rep1: none vs hybrid |
+| File                           | Isi                                                                              |
+| ------------------------------ | -------------------------------------------------------------------------------- |
+| **test_dataset.py**           |                |
+| **train_test_split.py**           |                |
+| **preprocessing.py**           |                |
+| **statistik.py**           |                |
+| **rf_tanpa_smote.py**   |                                         |
+| **rf_smote.py**         |                                        |
+| **multiple_run.py**           |                |
+| **multiple_run_tanpa_smote.py**           |                |
 
-## Acuan
 
-[../09-docs/tahap-4-analisis-data.md](../09-docs/tahap-4-analisis-data.md)
+Hasil yang Disajikan
+
+Output penelitian meliputi:
+
+-Accuracy.
+
+-Precision.
+
+-Recall.
+
+-F1-Score.
+
+-Confusion Matrix.
+
+-Statistik Deskriptif.
+
+-Shapiro-Wilk Test.
+
+-Wilcoxon Signed-Rank Test.
+
+-Effect Size (Cohen's d).
+
+-Confidence Interval 95%.
+
+Keterkaitan dengan Penelitian
+
+Output pada folder ini digunakan sebagai dasar dalam:
+
+-Analisis performa Random Forest.
+
+-Perbandingan performa sebelum dan sesudah penerapan SMOTE.
+
+-Analisis statistik penelitian.
+
+-Penyusunan pembahasan hasil penelitian.
+
+-Penyusunan kesimpulan penelitian.
+
