@@ -27,12 +27,17 @@ Visualisasi Hasil
 
 ## tables/
 Folder ini berisi hasil evaluasi model dalam bentuk tabel.
-| File                           | Isi                                                                              |
-| ------------------------------ | -------------------------------------------------------------------------------- |
-| **hasil_rf_tanpa_smote.py**   | Hasil evaluasi Random Forest tanpa SMOTE.                                        |
-| **hasil_rf_smote.py**         | Hasil evaluasi Random Forest dengan SMOTE.                                       |
-| **multiple_run.py**           | Rekapitulasi lima kali eksperimen menggunakan random seed berbeda.               |
-|                         |
+| File                            | Isi                                                                                                                                                                    |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **test_dataset.py**             | Program untuk melakukan pengecekan dataset, struktur data, jumlah atribut, serta distribusi kelas sebelum preprocessing.                                               |
+| **train_test_split.py**         | Program untuk membagi dataset menjadi data training dan data testing menggunakan random seed yang telah ditentukan.                                                    |
+| **preprocessing.py**            | Program preprocessing yang meliputi pembersihan data, penanganan missing value, encoding label, dan persiapan dataset sebelum pelatihan model.                         |
+| **rf_tanpa_smote.py**           | Implementasi Random Forest sebagai model baseline tanpa menggunakan SMOTE.                                                                                             |
+| **rf_smote.py**                 | Implementasi Random Forest dengan penerapan Synthetic Minority Over-sampling Technique (SMOTE) pada data training.                                                     |
+| **multiple_run.py**             | Program untuk menjalankan eksperimen Random Forest dengan SMOTE sebanyak lima kali menggunakan random seed berbeda.                                                    |
+| **multiple_run_tanpa_smote.py** | Program untuk menjalankan eksperimen Random Forest tanpa SMOTE sebanyak lima kali menggunakan random seed berbeda.                                                     |
+| **statistik.py**                | Program analisis statistik yang menghasilkan statistik deskriptif, Shapiro-Wilk Test, Wilcoxon Signed-Rank Test, Effect Size (Cohen's d), dan Confidence Interval 95%. |
+
 
 
 ## figures/
