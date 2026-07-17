@@ -28,9 +28,7 @@ Dataset: CIC-IDS2017
 
 Setelah diunduh, letakkan dataset pada struktur folder berikut:
 
-data/
-└── CIC_IDS2017/
-    └── Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
+data/CIC_IDS2017/Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
 
 Selanjutnya sesuaikan path dataset pada file konfigurasi atau source code apabila diperlukan.
 
